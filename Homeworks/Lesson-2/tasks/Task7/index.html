@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css">
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Завдання №6
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">З клавіатури вводяться вартість товару та кількість одиниць 3 товарів. Обчислити
+					вартість кожного товару окремо та загальну вартість. Вивести чек (як у супермаркеті) використовуючи елементи
+					розмітки.
+
+				</div>
+				<div class="check">
+					<script defer>
+						// Введення початкових даних
+						let firstItemName = prompt("Введіть назву першого товару", "Книга");
+						let secondItemName = prompt("Введіть назву другого товару", "Олівець");
+						let thirdItemName = prompt("Введіть назву другого товару", "Ручка");
+						let firstItemUnitPrice = parseFloat(prompt("Введіть ціну за одиницю першого товару", "120"));
+						let secondItemUnitPrice = parseFloat(prompt("Введіть ціну за одиницю другого товару", "15"));
+						let thirdItemUnitPrice = parseFloat(prompt("Введіть ціну за одиницю другого товару", "30"));
+						let firstItemQuantity = parseInt(prompt("Введіть кількість першого товару"));
+						let secondItemQuantity = parseInt(prompt("Введіть кількість другого товару"));
+						let thirdItemQuantity = parseInt(prompt("Введіть кількість третього товару"));
+						// Обчислення даних
+						let firstItemFullPrice = firstItemUnitPrice * firstItemQuantity;
+						let secondItemFullPrice = secondItemUnitPrice * secondItemQuantity;
+						let thirdItemFullPrice = thirdItemUnitPrice * thirdItemQuantity;
+						let total = firstItemFullPrice + secondItemFullPrice + thirdItemFullPrice;
+						// Виведення даних
+						document.write(
+							`
+								Найменування товару: ${firstItemName} <br>
+								Кількість: ${firstItemQuantity} шт. <br>
+								Ціна за одиницю товару: ${firstItemUnitPrice} грн. <br>
+								Всього: ${firstItemFullPrice} грн.<br><br>
+					
+								Найменування товару: ${secondItemName} <br>
+								Кількість: ${secondItemQuantity} шт. <br>
+								Ціна за одиницю товару: ${secondItemUnitPrice} грн. <br>
+								Всього: ${secondItemFullPrice} грн.<br><br>
+					
+								Найменування товару: ${thirdItemName} <br>
+								Кількість: ${thirdItemQuantity} шт. <br>
+								Ціна за одиницю товару: ${thirdItemUnitPrice} грн. <br>
+								Всього: ${thirdItemFullPrice} грн.<br><br>
+								Разом: ${total} грн.
+								`
+						);
+					</script>
+				</div>
+
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

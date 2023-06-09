@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Завдання №1
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<p class="page__condition">Знайти суму, добуток та частку двох дійсних чисел. Результат вивести у формі таблиці
+				</p>
+				<script defer>
+					// 1. Вводимо необхідні дані
+					let numTwo = parseFloat(prompt("Введіть перше дійсне число", "2.1"));
+					let numOne = parseFloat(prompt("Введіть перше дійсне число", "5.4"));
+					// 2. Знаходимо результат
+					let sumNumbers = numOne + numTwo;
+					let multiplyNumbers = Math.floor(numOne * numTwo);
+					let divideNumbers = Math.floor(numOne / numTwo);
+					// 3. Виводимо результат
+					document.write(`
+						<table>
+							<tr>
+								<th>Перше число</th>
+								<th>Друге число</th>
+								<th>Додавання</th>
+								<th>Множення</th>
+								<th>Ділення</th>
+							</tr>
+							<tr>
+								<td>${numOne}</td>
+								<td>${numTwo}</td>
+								<td>${sumNumbers}</td>
+								<td>${multiplyNumbers}</td>
+								<td>${divideNumbers}</td>
+							</tr>
+						</table>
+					`)
+
+				</script>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

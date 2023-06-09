@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Завдання №3
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">Дано вартість одиниці товару і кількість. Знайти загальну вартість та ПДВ (5% від
+					загальної вартості).
+				</div>
+				<script defer>
+					// 1. Вводимо значення
+					const vatPercentage = 0.05;
+					let quantity = parseInt(prompt("Кількість товару"));
+					let pricePerEach = parseInt(prompt("Вартість одиниці товару"))
+					// 2. Виконуємо обчислення
+					let priceExcTaxes = quantity * pricePerEach;
+					let vatOfItem = priceExcTaxes * vatPercentage;
+					let priceInclTaxes = priceExcTaxes + vatOfItem;
+					// 3. Виведення умови та результатів
+					document.write(`Ціна за одиницю товару: ${pricePerEach} грн. <br> Кількість товару: ${quantity} шт. <br> Ціна без ПДВ: ${priceExcTaxes} грн. <br> ПДВ: ${vatOfItem} грн. (${vatPercentage * 100}%) <br> Ціна з ПДВ: ${priceInclTaxes} грн. `)
+
+				</script>
+
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

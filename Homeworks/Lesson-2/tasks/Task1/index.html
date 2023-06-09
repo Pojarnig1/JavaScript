@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Завдання №0
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div><img src="img/ht1.png" alt=""></div>
+				<script defer>
+					// 1.Вводимо необхідні дані
+					let a = parseInt(prompt("Введіть a", "5"));
+					let b = parseInt(prompt("Введіть b", "3"));
+					let c = parseInt(prompt("Введіть c", "7"));
+					// 2. Знаходимо та виводимо результат для першого прикладу
+					let firstSquare = a + 12 + b;
+					document.write(`1) S1= a+12+b = ${firstSquare} <br>`); 11
+					// 3. Знаходимо та виводимо результат для другого прикладу
+					let secondSquare = Math.sqrt((a + b) / 2 * a);
+					document.write(`2) S2= ${secondSquare.toFixed(2)} <br>`);
+					// 4. Знаходимо та виводимо результат для третього прикладу
+					let thirdSquare = Math.cbrt((a + b) * c);
+					document.write(`3) S3 = ${thirdSquare.toFixed(2)} <br>`);
+					// 5. Знаходимо та виводимо результат для четвертого прикладу
+					let fourthSquare = Math.sin(a / -b)
+					document.write(`4) S4 = ${fourthSquare.toFixed(2)}`);
+				</script>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>
