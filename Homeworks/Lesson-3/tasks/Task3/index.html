@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Завдання №3
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">Випадковим чином генерується число від 1 до 5. Спробуйте вгадати число за 2 спроби.
+
+				</div>
+				<script defer>
+					// 1. Вводимо константи
+					const NUMBERMIN = 1;
+					const NUMBERMAX = 5;
+					// 2. Генеруємо випадкове число
+					let randomNumber = NUMBERMIN + Math.floor(Math.random() * (NUMBERMAX - NUMBERMIN + 1));
+					// 3. Записуємо число, яке вибрав користувач
+					let userFirstNumber = parseInt(prompt("Комп'ютер загадав число від одного до п'яти, спробуйте вгадати число за дві проби"));
+					// Зрівнюємо число користувача та загадане комп'ютером число, в залежності від чого виводимо результат
+					if (userFirstNumber !== randomNumber) {
+						alert("Ви не вгадали, спробуйте ще раз");
+						randomNumber = parseInt(prompt("Введіть число"));
+						if (randomNumber === randomNumber)
+							alert("Вітаю! Ви виграли!");
+						else alert("Ви програли =(")
+					} else alert("Вітаю! Ви виграли!");
+
+				</script>
+
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

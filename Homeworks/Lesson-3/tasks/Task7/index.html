@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css">
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Завдання №7
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">З клавіатури вводиться номер місяця. Вивести до якої пори він відноситься
+				</div>
+				<script defer>
+					let monthNumber = parseInt(prompt("Введіть номер місяця (Від 0 до 12)"));
+					let alertMessage;
+
+					switch (monthNumber) {
+						case 12:
+						case 1:
+						case 2:
+							alertMessage = "Зараз зима"
+							break;
+						case 3:
+						case 4:
+						case 5:
+							alertMessage = "Зараз весна"
+							break;
+						case 6:
+						case 7:
+						case 8:
+							alertMessage = "Зараз літо"
+							break;
+						case 9:
+						case 10:
+						case 11:
+							alertMessage = "Зараз осінь"
+							break;
+						default: alertMessage = "Невірно введено номер місяця"
+							break;
+					}
+					alert(alertMessage);
+
+// Розв'язання за допомогою if else
+					// if (monthNumber === 12 || monthNumber === 1 || monthNumber === 2)
+					// 	alert("Зараз зима");
+					// else if (monthNumber === 3 || monthNumber === 4 || monthNumber === 5)
+					// 	alert("Зараз весна");
+					// else if (monthNumber === 6 || monthNumber === 7 || monthNumber === 8)
+					// 	alert("Зараз літо");
+					// else if (monthNumber === 9 || monthNumber === 10 || monthNumber === 11)
+					// 	alert("Зараз осінь");
+					// else alert("Невірно введено номер місяця");
+				</script>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

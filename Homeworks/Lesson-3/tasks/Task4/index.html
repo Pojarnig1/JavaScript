@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Завдання №4
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">З клавіатури вводиться вік людини. Вивести на екран ким він є (дитиною у садочку,
+					школярем, студентом, працівником, пенсіонером).
+				</div>
+				<script defer>
+					// Вводимо вік користувача
+					let userAge = parseInt(prompt("Введіть вік людини"));
+					// Перевіряємо вік користувача та виводимо відповідь
+					if (userAge <= 6) alert("Людина є дитиною у садочку");
+					else if (userAge <= 17 && 6 < userAge) alert("Людина є школярем");
+					else if (userAge <= 24 && 17 < userAge) alert("Людина є студентом");
+					else if (userAge <= 60 && 24 < userAge) alert("Людина є  працівником");
+					else alert("Людина є пенсіонером");
+				</script>
+
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

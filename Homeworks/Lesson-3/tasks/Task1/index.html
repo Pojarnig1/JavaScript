@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Завдання №1
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					З клавіатури вводяться імена двох дітей та кількість у них цукерок. Вивести не екран ім’я тієї дитини, у якої
+					кількість цукерок є більшою, або вивести, що кількість однакова.
+				</div>
+				<script>
+					// Введення значень
+					let firstChildName = prompt("Введіть ім'я першої дитини");
+					let firstChildCandies = parseInt(prompt("Введіть к-ть цукерок у першої дитини"));
+					let secondChildName = prompt("Введіть ім'я другої дитини");
+					let secondChildCandies = parseInt(prompt("Введіть к-ть цукерок у другої дитини"));
+					// Перевірка значень та виведення результату
+					if (secondChildCandies > firstChildCandies)
+						alert(`${secondChildName} має більше цукерок`)
+					else if (secondChildCandies < firstChildCandies)
+						alert(`${firstChildName} має більше цукерок`)
+					else ("У дітей однакова кількість цукерок")
+				</script>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Завдання №2
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<p class="page__condition">
+					З клавіатури вводиться ціна товару і кількість грошей. Якщо грошей не вистачає то
+					відмовляємо у покупці, інакше, якщо ще залишаються гроші, то пропонуємо купити лотерею за 4 грн.
+				</p>
+				<script defer>
+					// Вводимо початкові дані
+					let itemPrice = parseFloat(prompt("Введіть ціну товару"));
+					let moneyAmount = parseFloat(prompt("Введіть кількість ваших грошей"));
+
+					if (moneyAmount < itemPrice) {
+						alert("У вас недостатньо коштів");
+					}
+					else if (moneyAmount - itemPrice >= 4) {
+						if (confirm("Чи не хочете Ви купити лотерейний білет за 4 грн.?")) {
+							alert("Дякуємо за покупку. Бажаємо Вам удачі!")
+						}
+						else ("Гарного вам дня!")
+					}
+					else alert("Дякуємо за покупку!");
+
+				</script>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>
