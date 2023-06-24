@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Завдання з уроку
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition"> Задача #1
+					Вивести з використанням циклів маркований список з випадковими числами (1-100). Кількість випадкових чисел
+					вводиться користувачем.
+					<ul>
+						<script>
+							const randomNumbersQuantity = parseInt(prompt("Введіть кількість випадкових чисел"))
+							for (let i = 1; i <= randomNumbersQuantity; i++) {
+								let ranNum = 1 + Math.floor(Math.random() * 100)
+								document.write(`
+								 <li>${i}) ${ranNum}</li>
+								`)
+							}
+						</script>
+					</ul>
+
+				</div>
+				<script>
+
+				</script>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>
