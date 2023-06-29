@@ -14,12 +14,6 @@ body {
 	font-weight: 700;
 }
 
-table,
-tr,
-td {
-	border: 2px solid #000;
-}
-
 button {
 	padding: 5px 10px;
 	font-size: 20px;
@@ -55,10 +49,6 @@ button {
 	padding: 30px;
 }
 
-.page__condition {
-	margin-bottom: 50px;
-}
-
 
 .footer {
 	text-align: center;
@@ -71,4 +61,15 @@ button {
 
 div img {
 	max-width: 500px;
+}
+
+.scrip__cnt {
+	display: flex;
+	flex-direction: column;
+}
+
+.scrip__cnt p {}
+
+.scrip__cnt input {
+	width: 300px;
 }

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №7 (Функції)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">Задача №0. Створити функцію, яка за номером місяця повертає пору року, до якої
+					відноситься цей місяць.
+					<script>
+						const monthNumber = parseInt(prompt("Введіть номер місяця"))
+						function getSeason(monthNumber) {
+							let season
+							switch (monthNumber) {
+								case 12:
+								case 1:
+								case 2:
+									season = "Зима"
+									break;
+								case 3:
+								case 4:
+								case 5:
+									season = "Весна"
+									break;
+								case 6:
+								case 7:
+								case 8:
+									season = "Літо"
+									break;
+								case 9:
+								case 10:
+								case 11:
+									season = "Осінь"
+									break
+								default: season = "Невірно вказано номер місяця"
+									break;
+							}
+							return season
+						}
+						alert(`Зараз ${getSeason(monthNumber)}`)
+					</script>
+				</div>
+				<script>
+
+				</script>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

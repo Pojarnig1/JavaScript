@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №7 (Функції)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Задача №4: Створити функцію, яка для 3 заданих чисел знаходить одночасно декілька результатів: кількість
+					парних, кількість додатних, кількість більших за 100.
+				</div>
+				<script>
+					const firstNumber = parseInt(prompt("Введіть 1 число"))
+					const secondNumber = parseInt(prompt("Введіть 2 число"))
+					const thirdNumber = parseInt(prompt("Введіть 3 число"))
+					let evenCounter = 0
+					let positiveCounter = 0
+					let moreThanHundredCounter = 0
+					function operationsBetweenNumbers(num1, num2, num3) {
+						// Знаходимо кількість парних чисел
+						if (num1 % 2 === 0) evenCounter++
+						if (num2 % 2 === 0) evenCounter++
+						if (num3 % 2 === 0) evenCounter++
+
+						if (num1 > 0) positiveCounter++
+						if (num2 > 0) positiveCounter++
+						if (num3 > 0) positiveCounter++
+
+						if (num1 > 100) moreThanHundredCounter++
+						if (num2 > 100) moreThanHundredCounter++
+						if (num3 > 100) moreThanHundredCounter++
+					}
+					operationsBetweenNumbers(firstNumber, secondNumber, thirdNumber)
+					document.write(`1) К-ть парних чисел: ${evenCounter}<br> 2) К-ть додатних чисел: ${positiveCounter}<br> 3) К-ть чисел більших за 100: ${moreThanHundredCounter}`)
+				</script>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

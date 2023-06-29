@@ -17,24 +17,28 @@
 		</header>
 		<main class="page">
 			<div class="page__container">
-				<div class="page__condition"> Задача #1
-					Вивести з використанням циклів маркований список з випадковими числами (1-100). Кількість випадкових чисел
-					вводиться користувачем.
-					<ul>
-						<script>
-							const randomNumbersQuantity = parseInt(prompt("Введіть кількість випадкових чисел"))
-							for (let i = 1; i <= randomNumbersQuantity; i++) {
-								let ranNum = 1 + Math.floor(Math.random() * 100)
-								document.write(`
-								 <li>${i}) ${ranNum}</li>
-								`)
-							}
-						</script>
-					</ul>
-
+				<div class="page__condition"> Задача №11. Вивести на екран усі двоцифрові числа, у яких перша цифра є більшою
+					або рівною за другу.
 				</div>
 				<script>
-
+					// -------------------------Перша задача--------------------------					
+					for (let i = 1; i <= 9; i++) {
+						for (let k = 0; k <= i; k++) {
+							document.write(` ${i}${k}, `)
+						}
+					}
+					// -------------------------Друга задача--------------------------
+					document.write(" <br> <br> <br> <br> <br> Задача №11.1. Вивести на екран усі трицифрові числа, у яких перша цифра є більшою або рівною за суму другої і третьої:")
+					for (let secondNum = 0; secondNum <= 9; secondNum++) {
+						for (let thirdNum = 0; thirdNum <= 9; thirdNum++) {
+							let numSum = secondNum + thirdNum
+							for (let firstNum = 1; firstNum <= 9; firstNum++) {
+								if (firstNum >= numSum) {
+									document.write(`${firstNum}${secondNum}${thirdNum}, `)
+								}
+							}
+						}
+					}
 				</script>
 			</div>
 		</main>

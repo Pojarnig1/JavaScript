@@ -14,12 +14,6 @@ body {
 	font-weight: 700;
 }
 
-table,
-tr,
-td {
-	border: 2px solid #000;
-}
-
 button {
 	padding: 5px 10px;
 	font-size: 20px;
@@ -55,10 +49,6 @@ button {
 	padding: 30px;
 }
 
-.page__condition {
-	margin-bottom: 50px;
-}
-
 
 .footer {
 	text-align: center;
@@ -67,8 +57,4 @@ button {
 	padding: 10px 0;
 	background-color: rgba(4, 12, 14, 0.95);
 	color: #BE9063;
-}
-
-div img {
-	max-width: 500px;
 }

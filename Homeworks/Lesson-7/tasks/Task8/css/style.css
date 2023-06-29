@@ -20,6 +20,14 @@ td {
 	border: 2px solid #000;
 }
 
+table {
+	display: inline-block;
+}
+
+tr {}
+
+td {}
+
 button {
 	padding: 5px 10px;
 	font-size: 20px;
@@ -53,10 +61,6 @@ button {
 .page {
 	flex: 1 1 auto;
 	padding: 30px;
-}
-
-.page__condition {
-	margin-bottom: 50px;
 }
 
 
