@@ -23,7 +23,10 @@
 					переходимо при кліку на зображення). тег img повинен знаходитись у середині тега a:
 				</div>
 				<script>
-
+					function createBanner(image, title, link) {
+						document.write(`<h1 class="banner__title">${title} </h1><a class="banner__link" href="${link}"> <img src='${image}'> </a>`)
+					}
+					createBanner("img/18373.jpg", "Це баннер", "https://www.instagram.com/an.driets/");
 				</script>
 			</div>
 		</main>
