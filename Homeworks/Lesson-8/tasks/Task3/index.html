@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №7 (Функції)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Задача №2. Створити функцію, яка за номером дня дозволяє з’ясувати чи є цей день робочим.
+				</div>
+				<script>
+					let dayNumber = parseInt(prompt("Введіть номер дня"))
+					function findWorkday(dayNumber) {
+						let answer;
+						if (0 < dayNumber && dayNumber <= 5)
+							answer = "Це робочий день тижня"
+						else answer = "Це не робочий день тижня"
+						return answer
+					}
+
+					alert(findWorkday(dayNumber));
+
+				</script>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

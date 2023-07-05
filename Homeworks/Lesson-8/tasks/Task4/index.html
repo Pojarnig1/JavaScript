@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №8 (Масиви)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Задача №8. Дано одновимірний масив, у якому зберігається певна виграшна сума (елементи заповнюються випадковим
+					чином значеннями від -500 до 500). Надаючи користувачу можливість вибирати номери елементів (поки він не
+					відмовиться). Знаходити сумарний виграш.
+				</div>
+				<div class="table">
+					<script>
+						//Початкові значення
+						const lotteryTicketsQuantity = parseInt(prompt("Введіть можливу кількість лотерейних білетів"))
+						const lotteryTicketsRangeMin = parseInt(prompt("Введіть мінімальний виграш"))
+						const lotteryTicketsRangeMax = parseInt(prompt("Введіть максимальний виграш"))
+						let userChoices = []
+
+						// Функція, яка свторює масив та заповнює його значеннями від minNumber до maxNumber
+						function createLottery(lotteryTicketsQuantity, minNumber, maxNumber) {
+							let lotteryTickets = new Array(lotteryTicketsQuantity)
+							for (let i = 0; i < lotteryTickets.length; i++) {
+								let randomNum = minNumber + Math.floor(Math.random() * (maxNumber - minNumber + 1))
+								lotteryTickets[i] = randomNum
+							}
+							return lotteryTickets
+						}
+						// Функція, яка запускає лотерею
+						function startLottery(lottery, userChoices) {
+							let userChoice = 0
+							let userPrize = 0
+							loop1: for (let i = 0; ; i++) {
+								userChoice = parseInt(prompt(`Введіть номер лотерейного білета від 0 до ${lotteryTicketsQuantity}`))
+								if ((!userChoice && userChoice !== 0) || userChoice > lotteryTicketsQuantity) break
+								for (let k = 0; k < userChoices.length; k++) {
+									if (userChoice === userChoices[k]) {
+										alert("Ви вже вибирали цей білет! Виберіть інший")
+										continue loop1
+									}
+								}
+								userPrize += lottery[userChoice]
+								userChoices.push(userChoice)
+								alert(`Нараховано ${lottery[userChoice]}грн.`)
+							}
+							return userPrize
+						}
+						//Функція, яка виводить результат гри в лотерею
+						function displayResults(lottery, userChoices, startLotteryFunc) {
+							document.write(`Результат вашої гри в лотерeю: ${startLottery(lottery, userChoices)} грн. <br>`)
+							document.write("Ваші лотерейні білети: <br>")
+							document.write("<table>")
+							for (let i = 0; i < userChoices.length; i++) {
+								document.write(`<tr>`)
+								document.write(`<td> Білет № ${userChoices[i]} </td> <td> Виграш білета: ${lottery[userChoices[i]]}грн. </td> `)
+								document.write(`<tr>`)
+							}
+							document.write("</table>")
+						}
+
+						let lottery = createLottery(lotteryTicketsQuantity, lotteryTicketsRangeMin, lotteryTicketsRangeMax)
+						displayResults(lottery, userChoices, startLottery);
+					</script>
+				</div>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

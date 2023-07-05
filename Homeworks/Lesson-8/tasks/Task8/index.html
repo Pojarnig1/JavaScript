@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №7 (Функції)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Задача 7. Створити функцію, яка випадковим чином виводить на екран одне із 4 зображень (шляхи до зображень
+					передаються у функцію)
+				</div>
+				<script>
+
+					function displayImage(img1, img2, img3, img4) {
+						let randomImageNumber = 1 + Math.floor(Math.random() * 4)
+						let image
+						switch (randomImageNumber) {
+							case 1:
+								image = img1
+								break;
+							case 2:
+								image = img2
+								break;
+							case 3:
+								image = img3
+								break;
+							case 4:
+								image = img4
+								break;
+						}
+						document.write(`<img src="${image}" alt="fruit">`)
+					}
+					displayImage("img/01.png", "img/02.png", "img/03.png", "img/04.png");
+				</script>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

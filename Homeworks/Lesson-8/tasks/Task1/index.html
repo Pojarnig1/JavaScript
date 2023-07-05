@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №8 (Масиви)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">Задача №1. Дано масив, який містить оцінки з К предметів. Знайти середній бал і
+					з’ясувати до якої категорії він відноситься (відмінник, двійочник (має хоча би одну двійку), хорошист (оцінки
+					добре і відмінно), трійочник(є хоча би одна трійка)).
+				</div>
+				<script>
+
+					// Функція для створення масиву та його заповнення
+					function inputMarks() {
+						let marksQuantity = parseInt(prompt("Введіть кількість оцінок за предмети"))
+						let marks = new Array(marksQuantity)
+						for (let i = 0; i < marks.length; i++) {
+							marks[i] = parseInt(prompt(`Введіть оцінку за предмет під номером ${i + 1} (За п'ятибальною системою)`))
+						}
+						return marks
+					}
+					//Функція для знаходження середнього балу
+					function findAverage(marks) {
+						let sumOfMarks = 0
+						let averageOfMarks = 0
+						for (let i = 0; i < marks.length; i++) {
+							sumOfMarks += marks[i]
+						}
+						averageOfMarks = sumOfMarks / marks.length
+						return averageOfMarks
+					}
+					// Функція для знаходження ким є учень
+					function howGoodIsStudent(marksArray) {
+						let message
+						for (let i = 0; i < marksArray.length; i++) {
+							if (marksArray[i] <= 2) {
+								message = "Учень двійочник"
+								break
+							}
+							else if (marksArray[i] === 3) {
+								message = "Учень трійочник"
+								break
+							}
+							else {
+								message = "Учень відмінник"
+								break
+							}
+						}
+						return message
+					}
+
+					let marks = inputMarks()
+					let averageOfMarks = findAverage(marks)
+					document.write(`Середня оцінка: ${averageOfMarks} <br>`)
+					document.write(howGoodIsStudent(marks))
+
+				</script>
+
+				<script>
+
+				</script>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>
