@@ -19,26 +19,26 @@
 			<div class="page__container">
 				<div class="page__condition"> Задача 2. Дано масив, який зберігає кількість відвідувачів магазину протягом
 					тижня. Вивести на екран:
-					номери днів, протягом яких кількість відвідувачів була меншою за 20;
-					номери днів, коли кількість відвідувачів була мінімальною;
-					номери днів, коли кількість відвідувачів була мінімальною;
-					загальну кількість клієнтів у робочі дні та окремо загальну кількість днів на вихідних.
+					номери днів, протягом яких кількість відвідувачів була меншою за 20; <br>
+					номери днів, коли кількість відвідувачів була мінімальною;<br>
+					номери днів, коли кількість відвідувачів була максимальною;<br>
+					загальну кількість клієнтів у робочі дні та окремо загальну кількість днів на вихідних. <br>
 				</div>
 				<script>
 					// Функція для створення та заповнення масиву з кількістю відвідувачів
 					function enterGuestsQuantity() {
-						let guestsPerWeek = new Array(7)
-						for (let i = 0; i < guestsPerWeek.length; i++) {
-							guestsPerWeek[i] = parseInt(prompt(`Введіть кількість відвідувачів за день №${i + 1}`))
+						let guestsPerWeek = []
+						for (let i = 1; i <= 7; i++) {
+							guestsPerWeek[i] = parseInt(prompt(`Введіть кількість відвідувачів за день №${i}`))
 						}
 						return guestsPerWeek
 					}
 					// Функція для знаходження днів, в які відвідувачів було менше за 20
 					function lessThanTwentyGuests(guestsPerWeek) {
-						document.write("В дні під номерами:")
-						for (let i = 0; i < guestsPerWeek.length; i++) {
+						document.write("В дні під номерами: ")
+						for (let i = 1; i <= guestsPerWeek.length; i++) {
 							if (guestsPerWeek[i] < 20) {
-								document.write(`${i + 1}. `)
+								document.write(`${i}. `)
 							}
 						}
 						document.write("було менше 20 відвідувачів <br>")
@@ -46,35 +46,46 @@
 
 					//  Функція для знаходження дня, в який було найменша кількість відвідувачів
 					function findWorstDay(guestsPerWeek) {
-						document.write("В день під номером: ")
+						document.write("В дні під номерами: ")
 						let minValue = +Infinity
-						let minValueDay = 0
-						for (let i = 0; i < guestsPerWeek.length; i++) {
+						let minValueDay = []
+						for (let i = 1; i <= guestsPerWeek.length; i++) {
 							if (guestsPerWeek[i] < minValue) {
 								minValue = guestsPerWeek[i]
-								minValueDay = i
 							}
 						}
-						document.write(`${minValueDay + 1} було менше найменше відвідувачів <br>`)
+						// Цикл, якщо однаково мінімальна кількість відвідувачів була в різні дні
+						for (let SameValues = 1; SameValues <= guestsPerWeek.length; SameValues++) {
+							if (minValue === guestsPerWeek[SameValues]) {
+								minValueDay.push(SameValues)
+							}
+						}
+						document.write(`${minValueDay} було найменше відвідувачів <br>`)
+						console.log(minValueDay)
 					}
 					//  Функція для знаходження дня, в який було найбільша кількість відвідувачів
 					function findBestDay(guestsPerWeek) {
-						document.write("В день під номером: ")
+						document.write("В дні під номерами: ")
 						let maxValue = -Infinity
-						let minValueDay = 0
-						for (let i = 0; i < guestsPerWeek.length; i++) {
+						let maxValueDay = []
+						for (let i = 1; i <= guestsPerWeek.length; i++) {
 							if (guestsPerWeek[i] > maxValue) {
 								maxValue = guestsPerWeek[i]
-								maxValueDay = i
 							}
 						}
-						document.write(`${maxValueDay + 1} було менше найбільше відвідувачів <br>`)
+						// Цикл, якщо однаково максимальна кількість відвідувачів була в різні дні
+						for (let SameValues = 1; SameValues <= guestsPerWeek.length; SameValues++) {
+							if (maxValue === guestsPerWeek[SameValues]) {
+								maxValueDay.push(SameValues)
+							}
+						}
+						document.write(`${maxValueDay} було найбільше відвідувачів <br>`)
 					}
 
 					//  Функція для знаходження кількості клієнтів у робочі дні
 					function findWorkDayGuests(guestsPerWeek) {
 						let guestsCounter = 0
-						for (let i = 0; i < 5; i++) {
+						for (let i = 1; i <= 5; i++) {
 							guestsCounter += guestsPerWeek[i]
 						}
 						return guestsCounter
@@ -82,7 +93,7 @@
 					//  Функція для знаходження кількості клієнтів у вихідні дні
 					function findHolidayGuests(guestsPerWeek) {
 						let guestsCounter = 0
-						for (let i = 5; i < 7; i++) {
+						for (let i = 6; i <= 7; i++) {
 							guestsCounter += guestsPerWeek[i]
 						}
 						return guestsCounter

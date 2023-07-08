@@ -13,25 +13,62 @@
 <body>
 	<div class="wrapper">
 		<header class="header">
-			Урок №7 (Функції)
+			Урок №8 (Масиви)
 		</header>
 		<main class="page">
 			<div class="page__container">
 				<div class="page__condition">
-					Задача №2. Створити функцію, яка за номером дня дозволяє з’ясувати чи є цей день робочим.
+					Задача №9. Морський бій. Користувач вводить кількість клітинок одновимірного масиву та кількість одиночних
+					кораблів. Комп’ютер довільно розміщує ці одиночні кораблі у масиві по один у клітинці (якщо у клітинці 0, то
+					клітинка пуста, якщо 1 – то це означає, що там є корабель). Користувач вводить номер клітинки, куди стріляє.
+					Гра продовжується до тих пір, поки не будуть потоплені усі кораблі.
 				</div>
 				<script>
-					let dayNumber = parseInt(prompt("Введіть номер дня"))
-					function findWorkday(dayNumber) {
-						let answer;
-						if (0 < dayNumber && dayNumber <= 5)
-							answer = "Це робочий день тижня"
-						else answer = "Це не робочий день тижня"
-						return answer
+
+
+					//Вводимо розмір поля та кількість кораблів
+					let squaresAmount = parseInt(prompt("Введіть кількість клітинок"))
+					let shipsAmount = parseInt(prompt("Введіть кількість одиночних кораблів"))
+					// функція для створення поля та розставлення кораблів
+					function createField(squaresAmount, shipsAmount) {
+						let field = []
+						let randMinNum = 0
+						let randMaxNum = squaresAmount - 1
+						for (let i = 0; i < squaresAmount; i++) {
+							field.push(0)
+						}
+						while (shipsAmount > 0) {
+							let shipPosition = randMinNum + Math.floor(Math.random() * (randMaxNum - randMinNum + 1))
+							if (field[shipPosition] !== 1) {
+								field[shipPosition] = 1
+								shipsAmount--
+							}
+						}
+						return field
 					}
 
-					alert(findWorkday(dayNumber));
+					//--------------------------------------------------------------------
+					// функція для проведення гри
+					function startGame(field, shipsAmount) {
 
+						while (shipsAmount > 0) {
+							let userShoot = parseInt(prompt("Введіть номер клітинки в яку бажаєте вистрілити (З нуля включно)"))
+							if (field[userShoot] === 1) {
+								shipsAmount--
+								alert(`Ви попали! Залишилось кораблів: ${shipsAmount}`)
+								field[userShoot] = 2
+							}
+							else if (field[userShoot] === 2)
+								alert("Ви вже стріляли сюди")
+							else alert("Мимо!")
+						}
+						alert("Ви виграли!")
+					}
+
+
+
+					let field = createField(squaresAmount, shipsAmount)
+					startGame(field, shipsAmount)
 				</script>
 			</div>
 		</main>

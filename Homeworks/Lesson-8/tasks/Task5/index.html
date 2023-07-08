@@ -13,37 +13,59 @@
 <body>
 	<div class="wrapper">
 		<header class="header">
-			Урок №7 (Функції)
+			Урок №8 (Масиви)
 		</header>
 		<main class="page">
 			<div class="page__container">
 				<div class="page__condition">
-					Задача №4: Створити функцію, яка для 3 заданих чисел знаходить одночасно декілька результатів: кількість
-					парних, кількість додатних, кількість більших за 100.
+					Задача #4. Дано послідовність номерів автомобілів. Підрахувати кількість номерів, які :
+					• починаються на букву «А»;
+					• перша і остання літери співпадають;
+					• складаються з більше ніш 5 символів;
+
 				</div>
 				<script>
-					const firstNumber = parseInt(prompt("Введіть 1 число"))
-					const secondNumber = parseInt(prompt("Введіть 2 число"))
-					const thirdNumber = parseInt(prompt("Введіть 3 число"))
-					let evenCounter = 0
-					let positiveCounter = 0
-					let moreThanHundredCounter = 0
-					function operationsBetweenNumbers(num1, num2, num3) {
-						// Знаходимо кількість парних чисел
-						if (num1 % 2 === 0) evenCounter++
-						if (num2 % 2 === 0) evenCounter++
-						if (num3 % 2 === 0) evenCounter++
-
-						if (num1 > 0) positiveCounter++
-						if (num2 > 0) positiveCounter++
-						if (num3 > 0) positiveCounter++
-
-						if (num1 > 100) moreThanHundredCounter++
-						if (num2 > 100) moreThanHundredCounter++
-						if (num3 > 100) moreThanHundredCounter++
+					let licencePlates = []
+					while (true) {
+						let userInput = prompt("Введіть номер автомобіля (Тільки латинські літери)")
+						if (Boolean(userInput) === false) break
+						licencePlates.push(userInput)
 					}
-					operationsBetweenNumbers(firstNumber, secondNumber, thirdNumber)
-					document.write(`1) К-ть парних чисел: ${evenCounter}<br> 2) К-ть додатних чисел: ${positiveCounter}<br> 3) К-ть чисел більших за 100: ${moreThanHundredCounter}`)
+
+					function firstFunc(licencePlates) {
+						let counter = 0
+						for (let i = 0; i < licencePlates.length; i++) {
+							if (licencePlates[i][0] === 'A') counter++
+						}
+						return counter
+					}
+
+					function secondFunc(licencePlates) {
+						let counter = 0
+						for (let i = 0; i < licencePlates.length; i++) {
+							let lastLetterNumber = licencePlates[i].length - 1
+							if (licencePlates[i][0] == licencePlates[i][lastLetterNumber]) counter++
+						}
+						return counter
+					}
+					function thirdFunc(licencePlates) {
+						let counter = 0
+						for (let i = 0; i < licencePlates.length; i++) {
+							if (licencePlates[i].length > 5) counter++
+						}
+						return counter
+					}
+
+					let firstLetterA = firstFunc(licencePlates)
+					let firstAndLastLettersEqual = secondFunc(licencePlates)
+					let lengthMoreThanFive = thirdFunc(licencePlates)
+
+					function showMessage(firstFunc, secondFunc, thirdFunc) {
+						document.write(`Кількість номерів, які починаються на букву «А» : ${firstFunc} <br>`)
+						document.write(`Кількість номерів, у яких перша і остання літери співпадають: ${secondFunc}<br>`)
+						document.write(`Кількість номерів, які складаються з більше ніж 5 символів ${thirdFunc}<br>`)
+					}
+					showMessage(firstLetterA, firstAndLastLettersEqual, lengthMoreThanFive)
 				</script>
 			</div>
 		</main>
