@@ -13,27 +13,27 @@
 <body>
 	<div class="wrapper">
 		<header class="header">
-			Завдання №2
+			Урок №9 (Масиви)
 		</header>
 		<main class="page">
 			<div class="page__container">
 				<div class="page__condition">
-					Вивести з кожного десятка (1-10, 11-20, 21-30, ... , 91-100) по 3 випадкових парних числа
+					Задача №9. Дано масив імен. Сформувати масив з перших літер цих імен.
+
 				</div>
 				<script>
 
-					for (let minNum = 1, maxNum = 10; maxNum <= 100; minNum += 10, maxNum += 10) {
-						document.write(`${minNum} - ${maxNum} <br>`)
-						for (let k = 0; k < 3;) {
-							let randNum = minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
-							if (randNum % 2 === 0) {
-								document.write(`${randNum}, <br> `)
-								k++
-							}
+					let names = ["Саша", "Вася", "Петя", "Гриша", "Іван", "Микола"]
+
+					function createFirstLetterArray(arr) {
+						let letters = []
+						for (const name of arr) {
+							letters.push(name[0])
 						}
-						document.write("<br>")
+						return letters
 					}
 
+					document.write(createFirstLetterArray(names))
 				</script>
 			</div>
 		</main>

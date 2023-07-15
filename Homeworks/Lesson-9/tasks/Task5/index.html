@@ -13,27 +13,27 @@
 <body>
 	<div class="wrapper">
 		<header class="header">
-			Завдання №2
+			Урок №9 (Масиви)
 		</header>
 		<main class="page">
 			<div class="page__container">
 				<div class="page__condition">
-					Вивести з кожного десятка (1-10, 11-20, 21-30, ... , 91-100) по 3 випадкових парних числа
+					Задача #10. Дано масив цін у грн. Податок складає 20%. Сформувати масив, який буде містити величину сплаченого
+					податку у грн.
 				</div>
 				<script>
+					let prices = [200, 100, 500, 1000, 600,]
 
-					for (let minNum = 1, maxNum = 10; maxNum <= 100; minNum += 10, maxNum += 10) {
-						document.write(`${minNum} - ${maxNum} <br>`)
-						for (let k = 0; k < 3;) {
-							let randNum = minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
-							if (randNum % 2 === 0) {
-								document.write(`${randNum}, <br> `)
-								k++
-							}
+					const tax = 20
+
+					function findTotalTax(prices, tax) {
+						let totalTax = 0
+						for (const price of prices) {
+							totalTax += price * tax / 100
 						}
-						document.write("<br>")
+						return totalTax
 					}
-
+					document.write(`Величина сплаченого податку = ${findTotalTax(prices, tax)} грн.`)
 				</script>
 			</div>
 		</main>

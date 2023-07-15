@@ -13,26 +13,30 @@
 <body>
 	<div class="wrapper">
 		<header class="header">
-			Завдання №2
+			Урок №9 (Масиви)
 		</header>
 		<main class="page">
 			<div class="page__container">
-				<div class="page__condition">
-					Вивести з кожного десятка (1-10, 11-20, 21-30, ... , 91-100) по 3 випадкових парних числа
+				<div class="page__condition">Задача №6 Дано масив елементів. Усі елементи, які більші за перший елемент
+					помножити на 2
 				</div>
 				<script>
+					let arr = [5, 1, 2, 3, 4, 10, 23, 5, 2, 56, 1233, 532, 23, 1]
 
-					for (let minNum = 1, maxNum = 10; maxNum <= 100; minNum += 10, maxNum += 10) {
-						document.write(`${minNum} - ${maxNum} <br>`)
-						for (let k = 0; k < 3;) {
-							let randNum = minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
-							if (randNum % 2 === 0) {
-								document.write(`${randNum}, <br> `)
-								k++
-							}
-						}
-						document.write("<br>")
+					function func1(arr) {
+						let firstElem = arr[0]
+						arr.forEach(
+							(elem, index, arr) => {
+								if (elem > firstElem) arr[index] *= 2
+							})
+						return arr
 					}
+
+					let result = func1(arr)
+					document.write(result)
+				</script>
+
+				<script>
 
 				</script>
 			</div>
