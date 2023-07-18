@@ -23,17 +23,21 @@
 				<script>
 					let arr = [5, 1, 2, 3, 4, 10, 23, 5, 2, 56, 1233, 532, 23, 1]
 
-					function func1(arr) {
-						let firstElem = arr[0]
-						arr.forEach(
-							(elem, index, arr) => {
-								if (elem > firstElem) arr[index] *= 2
-							})
-						return arr
-					}
 
-					let result = func1(arr)
-					document.write(result)
+					// function func1(arr) {
+					// 	let firstElem = arr[0]
+					// 	arr.forEach(
+					// 		(elem, index, arr) => {
+					// 			if (elem > firstElem) arr[index] *= 2
+					// 		})
+					// 	return arr
+					// }
+					// let result = func1(arr)
+					// document.write(result)
+
+					let newArr = arr.map((el, index, arr) => el > arr[0] ? el * 2 : el)
+					document.write(newArr)
+
 				</script>
 
 				<script>

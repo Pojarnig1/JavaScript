@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №10 (Масиви)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">Дано історію цін на цінні папери за деякий період (згенерувати від 1 до 10000)
+
+				</div>
+				<script>
+					let prices = []
+					// Заповнюємо масив значеннями 
+					for (let i = 0; i < 40; i++) {
+						let randNum = 1 + Math.floor(Math.random() * 10000)
+						prices.push(randNum)
+					}
+
+					function displayResult(array, title) {
+						document.write(`<div class="main-array"> <h2>${title}</h2>`)
+						document.write(array)
+						document.write('</div>')
+					}
+
+					let pricesString = prices.join(', ')
+					let secondArr = prices.filter(el => el < 1000)
+					let maxNumber = Math.max(...prices)
+					let thirdArr = prices.map(el => Math.floor(el * 100 / maxNumber) + "%")
+					let thirdArrString = thirdArr.join(", ")
+					let firstPriceIndex = prices.findIndex(el => el > 1000)
+					let lastPriceIndex = prices.findLast(el => el > 1000)
+					let QuantityCounter = prices.reduce((counter, num) => num > 1000 ? counter + 1 : counter, 0)
+					displayResult(pricesString, "Основний масив")
+					displayResult(secondArr, "1) Сформувати новий масив, у якому є тільки ті, що менші за 1000 грн. ")
+					displayResult(thirdArrString, "2) Сформувати новий масив, що міститиме значення цін у відсотках стосовно максимального")
+					displayResult(firstPriceIndex, "3) Знайти індекс першої ціни, що більше за 1000")
+					displayResult(lastPriceIndex, "4)Знайти останню ціну, що більше за 1000")
+					displayResult(QuantityCounter, "5)Підрахувати кількість цін, що більше за 1000")
+
+				</script>
+
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>
