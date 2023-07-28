@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №10 (Масиви)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">Задача 1. Знайти суми елементів у вказаній області (масиви розділені на 4 рівні
+					частини - не звертаємо увагу на криві малюнки ☺ )
+
+				</div>
+
+				<div class="images">
+					<img src="img/01.png" alt="">
+					<img src="img/02.png" alt="">
+					<img src="img/03.png" alt="">
+					<img src="img/04.png" alt="">
+				</div>
+				<script>
+					// Функція для створення одновимірного масиву
+					function createArr(elementsQuantity, minValue, maxValue) {
+						let arr = []
+						for (let i = 0; i < elementsQuantity; i++) {
+							let randNum = minValue + Math.floor(Math.random() * (maxValue - minValue))
+							arr.push(randNum)
+						}
+						return arr
+					}
+					// Функція для створення багатовимірного масиву
+					function createMultidimensionalArray(secondaryArraysAmount, secondaryArrayItemsAmount, minValue, maxValue) {
+						let arr = []
+						for (let i = 0; i < secondaryArraysAmount; i++) {
+							arr.push(createArr(secondaryArrayItemsAmount, minValue, maxValue))
+						}
+						return arr
+					}
+					// Створюємо двовимірний масив як на картинці
+					let array = createMultidimensionalArray(4, 10, 0, 100)
+					console.log(array)
+
+					// Знайти суму елементів в кожній області (Див. на картинках)
+
+
+					let firstTaskSum = array[0].reduce((prevSum, el) => prevSum + el, 0)
+					document.write(`1) Сума першої області: ${firstTaskSum}<br>`)
+					let secondTaskSum = array[1].reduce((prevSum, el) => prevSum + el, 0)
+					document.write(`2) Сума другої області: ${secondTaskSum}<br>`)
+					let thirdTaskSum = array[2].reduce((prevSum, el) => prevSum + el, 0)
+					document.write(`3) Сума третьої області: ${thirdTaskSum}<br>`)
+					let fourthTaskSum = array[3].reduce((prevSum, el) => prevSum + el, 0)
+					document.write(`4) Сума четвертої області: ${fourthTaskSum}<br>`)
+					// ------------------------------------------------------------
+
+
+				</script>
+
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

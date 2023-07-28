@@ -14,18 +14,18 @@ body {
 	font-weight: 700;
 }
 
-table,
-tr,
-td {
-	border: 2px solid #000;
-}
-
 button {
 	padding: 5px 10px;
 	font-size: 20px;
 	font-weight: 700;
 	display: block;
 	margin: 20px;
+}
+
+h2 {
+	font-size: 30px;
+	font-weight: 700;
+	margin-bottom: 50px;
 }
 
 .wrapper {
@@ -55,6 +55,9 @@ button {
 	padding: 30px;
 }
 
+.page__condition {
+	margin-bottom: 100px;
+}
 
 .footer {
 	text-align: center;
@@ -65,17 +68,12 @@ button {
 	color: #BE9063;
 }
 
-div img {
-	max-width: 500px;
-}
-
-.scrip__cnt {
+.images {
 	display: flex;
-	flex-direction: column;
+	gap: 20px;
+	align-items: center;
 }
 
-.scrip__cnt p {}
-
-.scrip__cnt input {
-	width: 300px;
+.images img {
+	max-width: 300px;
 }

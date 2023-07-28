@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №10 (Масиви)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					<h2>Дано інформацію про прибуток К магазинів протягом тижня. Знайти :</h2> <br>
+					1) загальний прибуток кожного масиву за тиждень; <br>
+					2) загальний прибуток усіх магазинів по дням (загальний прибуток усіх магазинів за понеділок, за вівторок, і
+					т.д.);<br>
+					3) максимальний прибуток за середу<br>
+					4) відсортувати кожен тиждень за зростанням <br>
+					5) загальний прибуток за робочі дні
+				</div>
+
+
+				<script>
+					const shopsAmount = parseInt(prompt("Введіть кількість магазинів"))
+					let daysInWeek = 7
+					// Функція для створення одновимірного масиву
+					function createArr(elementsQuantity, minValue, maxValue) {
+						let arr = []
+						for (let i = 0; i < elementsQuantity; i++) {
+							let randNum = minValue + Math.floor(Math.random() * (maxValue - minValue))
+							arr.push(randNum)
+						}
+						return arr
+					}
+					// Функція для створення багатовимірного масиву
+					function createMultidimensionalArray(secondaryArraysAmount, secondaryArrayItemsAmount, minValue, maxValue) {
+						let arr = []
+						for (let i = 0; i < secondaryArraysAmount; i++) {
+							arr.push(createArr(secondaryArrayItemsAmount, minValue, maxValue))
+						}
+						return arr
+					}
+
+					// Функція для знаходження прибутку усіх магазинів за вибраний день
+					let findDayProfit = (dayNumber, array) => array.reduce((total, shop) => total + shop[dayNumber], 0)
+
+					// Створюємо двовимірний масив З прибутків магазинів
+					let array = createMultidimensionalArray(shopsAmount, daysInWeek, 1000, 20000)
+					console.log(array)
+
+					// Створюємо новий масив з сумою прибутку за тиждень для кожного магазину
+					let totalProfitOfEachShop = array.map(el => el.reduce((sum, profit) => sum + profit))
+					document.write(`1) Прибуток кожного з магазинів ${totalProfitOfEachShop} <br><br>`)
+
+					document.write(`2) Прибуток всіх магазинів за понеділок: ${findDayProfit(1, array)} <br>`)
+					document.write(`2) Прибуток всіх магазинів за вівторок: ${findDayProfit(1, array)} <br>`)
+					document.write(`2) Прибуток всіх магазинів за середу: ${findDayProfit(2, array)} <br>`)
+					document.write(`2) Прибуток всіх магазинів за четвер: ${findDayProfit(3, array)} <br>`)
+					document.write(`2) Прибуток всіх магазинів за п'ятницю: ${findDayProfit(4, array)} <br>`)
+					document.write(`2) Прибуток всіх магазинів за суботу: ${findDayProfit(5, array)} <br>`)
+					document.write(`2) Прибуток всіх магазинів за неділю: ${findDayProfit(6, array)} <br><br>`)
+
+					//Знаходимо максимальний прибуток за середу
+					let maxWednesdayProfit = 0
+					for (const shopProfit of array) {
+						maxWednesdayProfit < shopProfit[2] ? maxWednesdayProfit = shopProfit[2] : maxWednesdayProfit
+					}
+					document.write(`3) Максимальний прибуток за середу : ${maxWednesdayProfit} <br> <br>`)
+
+					// 4) відсортувати кожен тиждень за зростанням
+					array.forEach(
+						shopTotalArray => shopTotalArray.sort((num1, num2) => num1 - num2)
+					)
+					console.log(array)
+
+					// 5) Знаходимо загальний прибуток за робочі дні
+					let totalOfWorkDays = 0
+					for (let shop = 0; shop < array.length; shop++) {
+						for (let day = 0; day < 5; day++) {
+							totalOfWorkDays += array[shop][day]
+						}
+					}
+					document.write(`5)Загальний прибуток всіх магазинів за робочі дні: ${totalOfWorkDays}`)
+				</script>
+
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>
