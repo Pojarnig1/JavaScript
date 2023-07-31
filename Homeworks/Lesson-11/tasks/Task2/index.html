@@ -69,11 +69,16 @@
 					document.write(`2) Прибуток всіх магазинів за неділю: ${findDayProfit(6, array)} <br><br>`)
 
 					//Знаходимо максимальний прибуток за середу
-					let maxWednesdayProfit = 0
-					for (const shopProfit of array) {
-						maxWednesdayProfit < shopProfit[2] ? maxWednesdayProfit = shopProfit[2] : maxWednesdayProfit
+
+					function findMaxProfitOfDay(array, dayNum) {
+						let maxDayProfit = 0
+						for (const shopProfit of array) {
+							maxDayProfit < shopProfit[dayNum] ? maxDayProfit = shopProfit[dayNum] : maxDayProfit
+						}
+						return maxDayProfit
 					}
-					document.write(`3) Максимальний прибуток за середу : ${maxWednesdayProfit} <br> <br>`)
+
+					document.write(`3) Максимальний прибуток за середу : ${findMaxProfitOfDay(array, 2)} <br> <br>`)
 
 					// 4) відсортувати кожен тиждень за зростанням
 					array.forEach(

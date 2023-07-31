@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №9 (Масиви)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">Задача №6 Дано масив елементів. Усі елементи, які більші за перший елемент
+					помножити на 2
+				</div>
+				<script>
+					let arr = [5, 1, 2, 3, 4, 10, 23, 5, 2, 56, 1233, 532, 23, 1]
+
+
+					// function func1(arr) {
+					// 	let firstElem = arr[0]
+					// 	arr.forEach(
+					// 		(elem, index, arr) => {
+					// 			if (elem > firstElem) arr[index] *= 2
+					// 		})
+					// 	return arr
+					// }
+					// let result = func1(arr)
+					// document.write(result)
+
+					let newArr = arr.map((el, index, arr) => el > arr[0] ? el * 2 : el)
+					document.write(newArr)
+
+				</script>
+
+				<script>
+
+				</script>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>
