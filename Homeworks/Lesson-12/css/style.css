@@ -81,6 +81,12 @@ body {
 	flex: 1 1 auto;
 }
 
+.item-page__condition span {
+	font-size: 22px;
+	text-transform: uppercase;
+	font-weight: 600;
+}
+
 .item-page__link {
 	color: #000;
 	text-align: center;

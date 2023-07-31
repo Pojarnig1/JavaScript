@@ -13,27 +13,56 @@
 <body>
 	<div class="wrapper">
 		<header class="header">
-			Урок №9 (Масиви)
+			Урок №12 (Методи сортування)
 		</header>
 		<main class="page">
 			<div class="page__container">
 				<div class="page__condition">
-					Задача №9. Дано масив імен. Сформувати масив з перших літер цих імен.
+					Задача №12. Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під час сортування
+					включеннями.
 
 				</div>
 				<script>
-
-					let names = ["Саша", "Вася", "Петя", "Гриша", "Іван", "Микола"]
-
-					function createFirstLetterArray(arr) {
-						let letters = []
-						for (const name of arr) {
-							letters.push(name[0])
+					const elAmount = 10
+					const minElValue = 1
+					const maxElValue = 10
+					// Функція для створення масиву
+					function createArr(elAmount, minElValue, maxElValue) {
+						let arr = []
+						for (let i = 0; i < elAmount; i++) {
+							const randNum = minElValue + Math.floor(Math.random() * (maxElValue - minElValue))
+							arr.push(randNum)
 						}
-						return letters
+						return arr
 					}
 
-					document.write(createFirstLetterArray(names))
+					// функція для сортування включеням 
+					function insertSort(arr) {
+						let counter = 0
+						for (let k = 1; k < arr.length; k++) {
+							const currentElement = arr[k]
+							let i = k - 1
+
+							while (i >= 0 && arr[i] > currentElement) {
+								arr[i + 1] = arr[i]
+								i = i - 1
+								counter++
+								document.write(`${arr} <br>`)
+							}
+							arr[i + 1] = currentElement
+
+						}
+						return counter
+					}
+					// Створюємо масив 
+					let arr = createArr(elAmount, minElValue, maxElValue)
+					// Виводимо масив без змін в консоль та на сторінку
+					console.log(arr)
+					document.write(`${arr} - початковий масив <br>`)
+
+					//Сортуємо масив та одночасно заносимо у змінну кількість обмінів
+					document.write(`Кількість обмінів при сортуванні включенням: ${insertSort(arr)}`)
+					console.log(arr)
 				</script>
 			</div>
 		</main>

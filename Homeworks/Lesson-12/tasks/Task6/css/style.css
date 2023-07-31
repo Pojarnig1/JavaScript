@@ -14,16 +14,10 @@ body {
 	font-weight: 700;
 }
 
-table {
-	width: 100%;
-	text-align: center;
-	margin-top: 50px;
-}
-
 table,
 tr,
 td {
-	border: 2px solid #3c3a3a;
+	border: 2px solid #000;
 }
 
 button {
@@ -61,14 +55,6 @@ button {
 	padding: 30px;
 }
 
-.page__condition {
-	margin-bottom: 50px;
-}
-
-.page__condition img {
-	width: 180px;
-	display: block;
-}
 
 .footer {
 	text-align: center;
@@ -81,4 +67,15 @@ button {
 
 div img {
 	max-width: 500px;
+}
+
+.scrip__cnt {
+	display: flex;
+	flex-direction: column;
+}
+
+.scrip__cnt p {}
+
+.scrip__cnt input {
+	width: 300px;
 }

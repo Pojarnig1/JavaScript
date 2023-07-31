@@ -13,32 +13,73 @@
 <body>
 	<div class="wrapper">
 		<header class="header">
-			Урок №9 (Масиви)
+			Урок №12 (Методи сортування)
 		</header>
 		<main class="page">
 			<div class="page__container">
-				<div class="page__condition"> Задача 7. Дано масив цін. Змінити цей масив так, що на ціни товарів, які більші за
-					1000 грн. дати 30% знижки.
+				<div class="page__condition"> Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під час
+					сортування змішуванням.<br><br>Я зробив масив на 10 цілих чисел, а не на 30 для наглядного виконання
+					завдання №4(коли змінений масив виводиться після кожного обміну), але кількість чисел Ви можете змінити у
+					константі <br> <br> <br>
 				</div>
 				<script>
-					let prices = [50, 100, 1500, 2000, 5, 12, 34, 10000, 42, 5253]
-
-					function makeDiscount(prices) {
-						prices.forEach((price, index, arr) => {
-							if (price > 1000) arr[index] -= price / 100 * 30
-						});
-					}
-
-					function displayNewPrices(prices) {
-						document.write(`Ціни товарів зі знижкою 30%: <br>`)
-						for (const price of prices) {
-							document.write(`${price} грн. <br>`)
+					const elAmount = 10
+					const minElValue = 1
+					const maxElValue = 10
+					// Функція для створення масиву
+					function createArr(elAmount, minElValue, maxElValue) {
+						let arr = []
+						for (let i = 0; i < elAmount; i++) {
+							const randNum = minElValue + Math.floor(Math.random() * (maxElValue - minElValue))
+							arr.push(randNum)
 						}
+						return arr
+					}
+					// функція swap
+					function swap(arr, i, j) {
+						let tmp = arr[i]
+						arr[i] = arr[j]
+						arr[j] = tmp
+					}
+					// функція сортування змішуванням
+					function coctailSort(array) {
+						let leftIndex = 0
+						let rightIndex = array.length - 1
+						let counter = 0
+						while (leftIndex < rightIndex) {
+							for (let i = leftIndex; i < rightIndex; i++) {
+								if (array[i] > array[i + 1]) {
+									swap(array, i, i + 1)
+									counter++
+									document.write(` ${array} <br>`)
+								}
+							}
+							rightIndex--
+
+							for (let i = rightIndex; i > leftIndex; i--) {
+								if (array[i] < array[i - 1]) {
+									swap(array, i, i - 1)
+									counter++
+									document.write(`${array} <br>`)
+								}
+							}
+							leftIndex++
+						}
+						return counter
 					}
 
-					makeDiscount(prices)
-					displayNewPrices(prices)
+					// Створюємо масив 
+					let arr = createArr(elAmount, minElValue, maxElValue)
 
+					// Виводимо масив без змін в консоль та на сторінку
+					console.log(arr)
+					document.write(`${arr} - початковий масив  <br>`)
+
+					//Сортуємо масив та одночасно заносимо у змінну кількість обмінів
+					document.write(`Кількість обмінів при сортуванні змішуванням: ${coctailSort(arr)}`)
+
+					// Виводимо відсортований масив в консоль
+					console.log(arr)
 				</script>
 			</div>
 		</main>
