@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №13 (Рекурсія. Замикання. Таймери)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Задача №3. З використанням замикань розробити ітератор, тобто функцію, що буде поступово за окремими викликами
+					видавати по одне значення від заданого мінімального до заданого максимального. Якщо значення досягне
+					максимального, то наступним буде мінімальне значення. З використанням цієї функції реалізувати перебір номерів
+					місяців.
+				</div>
+				<script>
+					function monthCounter(index, min = 1, max = 12) {
+
+						// Вкладена функція
+						function addIndex() {
+							if (index >= max) index = min
+							else index++
+							return index
+						}
+						// Замикання
+						return addIndex
+					}
+					// Присвоюємо вкладену функцію в змінну (Створюємо для неї контекст виконання)
+					let counter = monthCounter(0)
+
+					// Циклом викликаємо функцію 30 разів
+					for (let i = 0; i < 30; i++) {
+						document.write(`${counter()} <br>`)
+					}
+				</script>
+			</div>
+	</div>
+	</main>
+	<footer class="footer">
+		Роботи виконує Андрієць Андрій (Pojarnig1)
+	</footer>
+	</div>
+</body>
+
+</html>

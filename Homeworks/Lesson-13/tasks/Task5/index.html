@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №13 (Рекурсія. Замикання. Таймери)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Задача №4 З використанням замикань розробити ітератор, тобто функцію, що буде поступово за окремими викликами
+					видавати
+					по одну букву наперед заданого слова. З використанням нього розробити гру «Прекладач». Виводимо для
+					користувача опис цього слова і по одну букву користувач вводить переклад цього слова. Підрахувати кількість
+					вгаданих букв.
+				</div>
+				<script>
+
+					const word = "футбол" //загадане слово
+					const wordDescription = 'Командний вид спорту, в який грають дві команди по одинадцять гравців зі сферичним мячем.Близько250 мільйонів чоловіків і жінок із більш ніж 200 країн грають у цю гру, що робить її найпопулярнішим у світі видом спорту' // опис слова
+
+					// Функція для виведення слова по одній букві зроблена із замиканням
+					function fc1(word, i = 0, letter) {
+						function nextLetter() {
+							if (i >= word.length) i = 0
+							letter = word[i]
+							i++
+							return letter
+						}
+						return nextLetter
+					}
+					// Змінна замикання
+					const getNextLetter = fc1(word)
+
+					function guessWordByLetter(word, wordDescription, rightAnswerCounter = 0) {
+						//Вводимо масив в який будемо записувати виведені букви
+						let wordAtThisMoment = []
+						alert(wordDescription)
+
+						// внутрішня рекурсивна функція для гри
+						function playGame() {
+							const userGuess = prompt("Введіть наступну букву")
+							let rightLetter = getNextLetter()
+							wordAtThisMoment.push(rightLetter)
+
+							if (userGuess === rightLetter) {
+								rightAnswerCounter++
+								alert(`Ви вгадали. правильна буква ${rightLetter}, Слово: ${wordAtThisMoment}`)
+							}
+							else alert(`Ви не вгадали, правильна буква ${rightLetter}, Слово: ${wordAtThisMoment}`)
+
+
+							// Запускаємо рекурсію, якщо слово ще не виведене повністю
+							if (wordAtThisMoment.length < word.length) return playGame(word, rightAnswerCounter)
+							// Виводимо результат гри
+							document.write(`Кількість вгаданих букв: ${rightAnswerCounter}<br>`)
+						}
+						playGame()
+					}
+					guessWordByLetter(word, wordDescription);
+
+
+				</script>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

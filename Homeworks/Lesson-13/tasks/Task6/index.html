@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №13 (Рекурсія. Замикання. Таймери)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Задача №5. Тренажер додавання. Кожні 10 секунд користувачу задають випадковий приклад з додавання двох цифр і
+					робиться перевірка.
+				</div>
+				<script>
+
+					const minNum = 1
+					const maxNum = 10
+
+					function getRandNum(min, max) {
+						let randNum = min + Math.floor(Math.random() * (max - min + 1))
+						return randNum
+					}
+
+					function createMathExpression(min, max) {
+
+						const num1 = getRandNum(min, max)
+						const num2 = getRandNum(min, max)
+						const userGuess = parseInt(prompt(`${num1}+${num2}`))
+						let sum = num1 + num2
+
+						if (userGuess === sum) alert("Вірно =)")
+						else alert("Не вірно =(")
+
+					}
+					setInterval(createMathExpression, 10000, minNum, maxNum);
+
+				</script>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

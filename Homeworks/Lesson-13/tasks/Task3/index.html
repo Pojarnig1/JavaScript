@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №13 (Рекурсія. Замикання. Таймери)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Задача №12. Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під час сортування
+					включеннями.
+
+				</div>
+				<script>
+
+					let numbers = [1, 3, 4, 6, 7, 11, 23, 24, 25, 26, 27, 41, 52, 62, 72, 73, 88, 99, 100, 102, 105]
+
+					function binarySearch(arr, x, start = 0, end = arr.length) {
+						if (end < start) return - 1
+
+						let mid = Math.floor((start + end) / 2)
+
+						if (arr[mid] === x) return mid
+						if (arr[mid] < x) return binarySearch(arr, x, mid + 1, end)
+						else return binarySearch(arr, x, start, mid - 1)
+					}
+
+
+					let index = binarySearch(numbers, 27)
+					document.write(index)
+				</script>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>
