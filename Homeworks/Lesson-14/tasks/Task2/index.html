@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №13 (Об`єкти. Вступ)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Задача №2. Розробити функцію, у яку передають об’єкт (день, місяць, рік). Визначити, який буде рік через N
+					місяців.
+				</div>
+				<script>
+
+					const month = parseInt(prompt("Введіть місяць"))
+					const N = parseInt(prompt("Введіть наступну к-ть місяців"))
+
+					// Функція для визначення року через N місяців
+					function getMonthInNDays({ month, year }, N) {
+						let monthSum = month + N
+						let nextYear = year + monthSum / 12
+						return Math.floor(nextYear)
+					}
+					// Об'єкт з датою
+					let date = {
+						day: "Monday",
+						month,
+						year: 2023
+					}
+
+					let getNextYear = getMonthInNDays(date, N)
+
+					document.write(`Зараз місяць під номером ${month}, через ${N} місяців буде ${getNextYear} рік `)
+				</script>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

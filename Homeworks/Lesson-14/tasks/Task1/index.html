@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №14 (Об"єкти. Вступ)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">Задача #1. Описати масив об’єктів – сайтів розроблених компанією з такими
+					властивостями
+					<img src="img/ht1.png" alt="" style="width: 500px;">
+					<img src="img/ht2.png" alt="" style="width: 600px;">
+				</div>
+				<script>
+					let websites = [{
+						name: "Samsung",
+						owner: "Andrii",
+						sponsors: [
+							{
+								firstName: "Vlasov",
+								lastName: "Valentin",
+								investment: 4200000,
+							}],
+						year: 2001,
+						cost: 170000
+					},
+					{
+						name: "Samsung",
+						owner: "Valera",
+						sponsors: [{
+							firstName: "Kozachkov",
+							lastName: "Kozak",
+							investment: 250000
+						}],
+						year: 2000,
+						cost: 110000
+					},
+					{
+						name: "Sanso",
+						owner: "Vania",
+						sponsors: [{
+							firstName: "Silitskii",
+							lastName: "Oleksandr",
+							investment: 10000
+						}],
+						year: 2009,
+						cost: 130000
+					},
+					{
+						name: "Sanso",
+						owner: "Vania",
+						sponsors: [{
+							firstName: "Silitskii",
+							lastName: "Oleksandr",
+							investment: 10000
+						}],
+						year: 2009,
+						cost: 3000
+					},
+					{
+						name: "Sanso",
+						owner: "Anastasiia",
+						sponsors: [{
+							firstName: "Vlasov",
+							lastName: "Valentin",
+							investment: 800000
+						}],
+						year: 2008,
+						cost: 190000
+					},
+					{
+						name: "Sansoka",
+						owner: "Valeriia",
+						sponsors: [{
+							firstName: "Vlasova",
+							lastName: "Valentina",
+							investment: 8000
+						}],
+						year: 2010,
+						cost: 5000
+					},
+					]
+
+					//
+					// ================== 1) Знайти загальну вартість усіх сайтів=====================
+
+					// // З використанням циклу for of
+					// let totalCost = 0
+					// for (const site of websites) {
+					// 	totalCost += site.cost
+					// }
+					// document.write(`1) Загальна вартість усіх сайтів = ${totalCost}`)
+
+					// // З використанням методу reduce
+					let totalCost = websites.reduce(
+						(prevCost, site) => prevCost + site.cost
+						, 0)
+					document.write(`1) Загальна вартість усіх сайтів = ${totalCost} <br>`)
+
+					// =================================================================
+					// ============= 2) Знайти кількість сайтів, що було зроблено між 2000 та 2009рр.====================
+
+					let websitesAmount = websites.reduce(
+						(prevCounter, site) => {
+							if (site.year >= 2000 && 2009 > site.year) return prevCounter + 1
+							else return prevCounter
+						},
+						0
+					)
+					document.write(`2) Кількість сайтів, що було зроблено між 2000 та 2009рр : ${websitesAmount} <br>`)
+
+					// =================================================================
+					// =========== 3) Знайти кількість сайтів, де сума спонсорських вкладів більше за 100000 ================
+
+					let websitesAmountBySponsorsDeposit = websites.reduce(
+						(prevCounter, site) => site.sponsors.investment > 100000 ? prevCounter + 1 : prevCounter
+						, 0
+					)
+					document.write(`3)Kількість сайтів, де сума спонсорських вкладів більше за 100000: ${websitesAmountBySponsorsDeposit}<br>`)
+
+					// =================================================================
+					// =========== 4) Створити загальний список усіх спонсорів ================
+
+					let sponsors = websites.map(site => site.sponsors.map(sponsor => sponsor.firstName + sponsor.lastName))
+					document.write(`4) Загальний список усіх спонсорів: ${sponsors}<br>`)
+
+					// =================================================================
+					// =========== 5) Знайти рік, коли прибуток був найбільшим ================
+
+					let maxEarnings = 0
+					let maxEarningsYear
+
+					for (const site of websites) {
+						if (site.cost > maxEarnings) {
+							maxEarnings = site.cost
+							maxEarningsYear = site.year
+						}
+					}
+					document.write(`5) Рік, коли прибуток був найбільшим: ${maxEarningsYear}<br>`)
+					// =================================================================
+					// =========== 6) Упорядкувати список за спаданням прибутку ================
+
+					websites.sort(
+						(site1, site2) => {
+							return site2.cost - site1.cost
+						}
+					)
+
+					// =================================================================
+					// =========== 7) Створити 2 окремих списки з копіями об'єктів, що містять сайти з вартістю до 10000 і більше 10000 ================
+					let listUnder10000 = websites.filter(
+						(site) => site.cost < 10000
+					)
+					let listUpper10000 = websites.filter(
+						(site) => site.cost > 10000
+					)
+					console.log(listUpper10000)
+					console.log(listUnder10000)
+
+				</script>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>
