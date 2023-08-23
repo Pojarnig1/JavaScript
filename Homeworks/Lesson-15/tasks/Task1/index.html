@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №15 (Об'єкти. Продовження)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition"> Задача №0 Дано два об’єкта. Обидва містять масив цілих чисел. При цьому у одному з
+					них є функція знаходження суми, а у іншому – функція для знаходження добутку тих, які знаходяться між заданими
+					мінімальним і максимальних значенням.
+					Використати обидва методи стосовно обидвох об’єктів (використати call, apply)
+				</div>
+				<script>
+					// Об'єкт №1
+					let obj1 = {
+						// Властивості харакатеристики
+						numbers: [1, 2, 4, 54, 11, 52, 532, 66, 23, 1234, 523, 7, 12],
+
+						// функція знаходження суми
+						getSum: function () {
+							let sum = this.numbers.reduce(
+								(prevSum, number) => number + prevSum,
+								0
+							)
+							return sum
+						},
+					}
+					// Об'єкт №2
+					let obj2 = {
+						// Властивості харакатеристики
+						numbers: [15, 12, 54, 254, 171, 5242, 5032, 36, 23, 77, 88, 9, 3],
+
+						// функція для знаходження добутку тих, які знаходяться між заданимим мінімальним і максимальних значенням.
+						getMultiply: function (min, max) {
+							let result = 1
+
+							this.numbers.forEach(
+								(num) => {
+									if (num > min && num < max) result *= num
+								}
+							)
+							return result
+						}
+					}
+
+					document.write(`Метод call: ${obj1.getSum.call(obj2)} <br>`)
+
+					document.write(`Метод apply: ${obj2.getMultiply.apply(obj1, [1, 10])}`)
+				</script>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title></title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №15 (Об'єкти. Продовження)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					<img src="img/ht1.png" alt="">
+				</div>
+				<script>
+					class Auto {
+						constructor(initBrand, initFuelTank, initFuel, initSeats, initPassengers) {
+							this.Brand = initBrand
+							this.fuelTank = initFuelTank
+							this.fuel = initFuel
+							this.seats = initSeats
+							this.passengers = initPassengers
+
+						}
+
+						// Функція заправки автомобіля
+						refuel(liters) {
+
+							// Заправляємо в бак вказану кількість літрів
+							document.write(`Кількість літрів в баці до заправки ${this.fuel} <br>`)
+							let totalLiters = this.fuel + liters
+							let restFuel = 0
+							if (this.fuelTank - totalLiters > 0) {
+								this.fuel = totalLiters
+							}
+							// Якщо водій заправляє більше палива, ніж може вмістити бак
+							else {
+								this.fuel = this.fuelTank
+								restFuel = totalLiters - this.fuelTank
+							}
+							document.write(`Ви заправляєте ${liters} л.`)
+							if (restFuel > 0) document.write(`Надлишкове паливо ${restFuel}л. <br>`)
+							document.write(`Кількість літрів в баці після заправки ${this.fuel} <br>`)
+
+						}
+
+						// Функція відображення кількості пасажирів в автомобілі
+						displayPassengersAmount() {
+							document.write(`Зараз в автомобілі знаходиться ${this.passengers} пасажири <br>`)
+						}
+						// Функія додавання пасажира
+						addPassenger(passengersAmount) {
+							let totalPassengers = this.passengers + passengersAmount
+							if (totalPassengers <= this.seats) this.passengers += passengersAmount
+							else alert(`В автомобілі недостатньо місця для всіх пасажирів`)
+						}
+						// Функція висадки пасажира
+						dropOffPassenger(passengersAmount) {
+							let totalPassengers = this.passengers - passengersAmount
+							if (totalPassengers > 1) this.passengers = totalPassengers
+							else alert("Ви не можете висадити водія")
+						}
+					}
+
+					let Lexus = new Auto("Lexus", 60, 30, 5, 2)
+					console.log(Lexus)
+
+					Lexus.refuel(30)
+					Lexus.displayPassengersAmount()
+
+					Lexus.addPassenger(3)
+					Lexus.dropOffPassenger(2)
+
+				</script>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

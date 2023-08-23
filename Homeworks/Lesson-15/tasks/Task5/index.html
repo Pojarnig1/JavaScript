@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title></title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №15 (Об'єкти. Продовження)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					<img src="img/ht1.png" alt="">
+				</div>
+				<script>
+					class Baner {
+						constructor(bannerList) {
+							this.bannerList = bannerList
+						}
+
+						// Функція яка повертає довільне число
+						randNum(min, max) {
+							min ??= 0
+							max ??= this.bannerList.length
+							return Math.floor(Math.random() * (max - min)) + min
+						}
+
+						// Функція яка повертає довільний об'єкт (Банер)
+						getRandObj() {
+							return this.bannerList[this.randNum()]
+						}
+
+						// Функція яка виводить довільний об'єкт (Банер)
+						showBaner() {
+							let displayedBanner = this.getRandObj()
+							document.write(`<a class="imageObj" href="${displayedBanner.link}"><img src="${displayedBanner.image}"></a>`)
+						}
+					}
+
+					let bannersArray = [
+						{ link: "https://uk.wikipedia.org/wiki/Lexus", image: "img/logos/lexus.png" },
+						{ link: "https://uk.wikipedia.org/wiki/Audi", image: "img/logos/audi.png" },
+						{ link: "https://uk.wikipedia.org/wiki/Mercedes-Benz", image: "img/logos/mercedes.png" },
+						{ link: "https://uk.wikipedia.org/wiki/BMW", image: "img/logos/bmw.png" },
+					]
+
+					let banners = new Baner(bannersArray)
+					banners.showBaner()
+
+				</script>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

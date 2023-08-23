@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №15 (Об'єкти. Продовження)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Задача 1. Створити об’єкт «Тир». У масиві зберігаються 1, якщо у цьому квадраті є заєць і 0 в іншому випадку.
+				</div>
+				<script>
+					const cellsAmount = parseInt(prompt("Введіть кількість квадратів у грі 'Тир'"))
+					const rabbitAmount = parseInt(prompt("Введіть кількість зайців які будуть у довільному порядку розміщені на полі"))
+
+					class Range {
+						constructor(cellsAmount, rabbitAmount) {
+							this.cellsAmount = cellsAmount
+							this.rabbitAmount = rabbitAmount
+							this.range = this.fillRange()
+						}
+
+						// Функція яка створює довільне число
+						randNum(min, max) {
+							min ??= 0
+							max ??= this.cellsAmount
+
+							return Math.floor(Math.random() * (max - min)) + min
+						}
+
+						// Функція яка створює поле та заповнює його нулями
+						createRange() {
+							let range = new Array(this.cellsAmount)
+							range.fill(0)
+							console.log(range)
+							return range
+						}
+						// Функція яка заповнює поле зайцями (одиницями) в довільному порядку
+						fillRange() {
+							let range = this.createRange()
+							for (let i = 0; i < this.rabbitAmount;) {
+								let randIndex = this.randNum()
+								if (range[randIndex] === 0) {
+									range[randIndex] = 1
+									i++
+								}
+							}
+							console.log(range)
+							return range
+						}
+
+						// Функція, яка запускає гру
+						run() {
+							// Створюю масив, для запису в нього номерів клітинок в які гравець вже стріляв
+							let shootsList = []
+
+							while (this.rabbitAmount > 0) {
+								let shoot = parseInt(prompt("Введіть номер клітинки, в яку бажаєте вистрілити"))
+
+								if (this.range[shoot] === 1) {
+									this.rabbitAmount--
+									alert(`Ви попали! Залишилось зайців ${this.rabbitAmount} `)
+								}
+								else if (shootsList.includes(shoot)) alert("Ви вже стріляли в це поле")
+								else alert(`Ви промазали! Залишилось зайців ${this.rabbitAmount}`)
+								shootsList.push(shoot)
+							}
+						}
+					}
+
+					let range1 = new Range(cellsAmount, rabbitAmount)
+					range1.run()
+
+
+
+				</script>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>
