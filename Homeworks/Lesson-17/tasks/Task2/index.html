@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №17 (Статичні члени. Композиція, агрегація)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Створити службове авто (водій, марка, номер). Створити клас таким чином, щоб можна було створити тільки один
+					екземпляр цього класу.
+				</div>
+				<script>
+
+					class CompanyCar {
+						static companyCarRef
+
+						constructor(initData) {
+
+							if (CompanyCar.companyCarRef)
+								return CompanyCar.companyCarRef
+
+							Object.assign(this, initData)
+							CompanyCar.companyCarRef = this
+						}
+						toString() {
+							let res = ''
+							for (const key in this) {
+								res += `${key}: ${this[key]},`
+							}
+							return res
+						}
+					}
+
+					let lexus = new CompanyCar({
+						driver: "Andrii",
+						carBrand: "Lexus",
+						licencePlate: "AA7777AA"
+					})
+
+					let hyinday = new CompanyCar({
+						driver: "Vasya",
+						carBrand: "Hyinday",
+						licencePlate: "AA1111AA"
+					})
+					console.log(lexus);
+					document.write(lexus)
+					// driver, carBrand, licencePlate
+					console.log(hyinday);
+				</script>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

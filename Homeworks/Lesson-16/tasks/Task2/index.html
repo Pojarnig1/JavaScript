@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №16 (Класи. Інкапсуляція)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Задача 2. Створити клас TMoney для роботи з грошовими сумами. Сума повинна зберігатися у вигляді доларового
+					еквіваленту. Реалізувати методи додавання/вилучення грошової маси, вказуючи необхідну суму у гривнях, та
+					визначення курсу долара, при якому сума у гривнях збільшиться на 100. Курс долара зберігати в окремому полі.
+
+				</div>
+				<script>
+
+					class TMoney {
+						#dollarBalance
+						constructor(balanceUAH, exchangeRate) {
+							this.dollarRate = exchangeRate
+							this.Balance = balanceUAH
+						}
+
+
+						get Balance() {
+							return this.#dollarBalance * this.dollarRate
+						}
+						set Balance(newSum) {
+							if (newSum < 0)
+								throw new Error("Сума не може бути від'ємною")
+
+							this.#dollarBalance = newSum / this.dollarRate
+						}
+
+						addMoney(grnSum) {
+							if (grnSum < 0) throw new Error("Ви не можете додавати від'ємну суму")
+							this.Balance += grnSum
+						}
+						subMoney(grnSum) {
+							if (grnSum < 0) throw new Error("Ви не можете віднімати від'ємну суму")
+							this.Balance -= grnSum
+						}
+
+						dollarRateWhenSumPlus100() {
+							return (this.Balance + 100) / this.dollarRate
+						}
+					}
+
+					let wallet = new TMoney(5000, 36)
+					console.log(wallet)
+
+
+					wallet.addMoney(500)
+					console.log(wallet)
+					wallet.subMoney(200)
+					console.log(wallet)
+
+					console.log(`Баланс в гривнях: ${wallet.Balance}`)
+
+					let dollarRate100 = wallet.dollarRateWhenSumPlus100()
+
+
+
+
+				</script>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title></title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №17 (Статичні члени. Композиція, агрегація)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Особиста бібліотека. Картотека домашньої бібліотеки: дані книги (автори (піб, рік народження, короткий опис),
+					назва книги, жанр, видавництво (назва, реєстраційний номер, рік засування)). Реалізувати розділи бібліотеки
+					організувати додавання/вилучення книг та вибір книг за назвою, за ПІБ автора, за видавництвом.
+				</div>
+				<script>
+
+					class Library {
+						constructor(libraryName, books) {
+							this.name = libraryName
+							this.booksList = books
+						}
+
+						addBook(book) {
+							this.booksList.push(book)
+						}
+						removeBook(bookNumber) {
+							this.booksList = this.booksList.filter((book, id) => id !== bookNumber)
+						}
+
+						chooseBookByName(searchingBookName) {
+							let searchingBook = this.booksList.filter((book) => book.bookName == searchingBookName)
+							return searchingBook
+						}
+
+						chooseBookByAuthorName(searchingBookAuthorName) {
+							return this.booksList.filter((book) => book.author.name.includes(searchingBookAuthorName))
+
+						}
+						chooseBookByPublisherName(searchingBookPublisherName) {
+							return this.booksList.filter((book) => book.publisher.publisherName.includes(searchingBookPublisherName));
+						}
+
+						chooseBookByPublisherId(searchingBookPublisherId) {
+							return this.booksList.filter((book) => book.publisher.publisherId === searchingBookPublisherId);
+						}
+
+					}
+
+					class Author {
+						constructor({ authorName, authorYearOfBith, authorDescription }) {
+							this.name = authorName
+							this.yearOfBith = authorYearOfBith
+							this.description = authorDescription
+						}
+					}
+
+					class Publisher {
+						constructor({ publisherName, publisherId, publisherYear }) {
+							this.publisherName = publisherName
+							this.publisherId = publisherId
+							this.publisherYear = publisherYear
+						}
+					}
+
+					class Book {
+						constructor(bookName, bookGenre, initData) {
+							this.bookName = bookName
+							this.publisher = new Publisher(initData)
+							this.author = new Author(initData)
+							this.bookGenre = bookGenre
+						}
+					}
+
+					let booksList = [
+						new Book("Лебеді", "казка", {
+							publisherName: "Квітка",
+							publisherYear: 2009,
+							publisherId: 11426,
+							authorName: 'Тарас Григорович Шевченко',
+							authorYearOfBith: 1814,
+							authorDescription: 'Видатний український поет',
+						}),
+						new Book("Риби", "легенда", {
+							publisherName: "Будинок книг",
+							publisherYear: 2011,
+							publisherId: 11427,
+							authorName: 'Валентин Васильович Сіліцький',
+							authorYearOfBith: 1854,
+							authorDescription: 'Видатний поет'
+						}),
+						new Book("Гуси", "повість", {
+							publisherName: "Все для молоді",
+							publisherYear: 2001,
+							publisherId: 11216,
+							authorName: 'Олександр Олександрович Поліщук',
+							authorYearOfBith: 1974,
+							authorDescription: 'Поет початківець'
+						}),
+						new Book("Качки", "новелета", {
+							publisherName: "Чашка кави",
+							publisherYear: 2015,
+							publisherId: 21532,
+							authorName: 'Микола Васильович Грищенко',
+							authorYearOfBith: 1924,
+							authorDescription: 'Поет, письменник, художник'
+						}),
+						new Book("Як стати програмістом?", "байка", {
+							publisherName: "Gates",
+							publisherYear: 2015,
+							publisherId: 12571,
+							authorName: "Білл Гейтс",
+							authorYearOfBith: 1933,
+							authorDescription: 'Американський бізнесмен'
+						}),
+					]
+
+					let library = new Library("Бібліотека у Сови", booksList)
+					console.log(library);
+
+					let searchingBook = library.chooseBookByName("Качки")
+					console.log(searchingBook);
+
+					let bookByAuthorName = library.chooseBookByAuthorName("Тарас")
+					console.log(bookByAuthorName);
+
+					let bookByPublisher = library.chooseBookByPublisherName("Будинок")
+					console.log(bookByPublisher);
+
+					let bookByPublisherId = library.chooseBookByPublisherId(11216)
+					console.log(bookByPublisherId);
+
+				</script>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

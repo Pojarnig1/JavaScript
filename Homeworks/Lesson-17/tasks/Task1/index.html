@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №16 (Класи)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition"> Створити клас, що дозволяє виконувати такі операції над масивами: знаходження
+					кількості додатних, кількості від’ємних, кількість входжень деякого числа (статичні методи)
+				</div>
+				<script>
+					class ArrayOp {
+
+						static positiveCount(arr) {
+							return arr.reduce((prevCount, el) => el > 0 ? prevCount + 1 : prevCount, 0)
+						}
+
+						static negativeCount(arr) {
+							return arr.reduce((prevCount, el) => el < 0 ? prevCount + 1 : prevCount, 0)
+						}
+
+						static numberAmount(arr, number) {
+							return arr.reduce((prevCount, el) => el === number ? prevCount + 1 : prevCount, 0)
+						}
+					}
+
+					let array = [1, 43, 1, 2, 6, 2, -23, -11, -300, 305, 231, 2, 2, 567, 200, 231, 452, 2, 2, 123,]
+
+					console.log(ArrayOp.negativeCount(array));
+					console.log(ArrayOp.positiveCount(array));
+					console.log(ArrayOp.numberAmount(array, 2));
+
+				</script>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

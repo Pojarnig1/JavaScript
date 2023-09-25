@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title></title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №17 (Статичні члени. Композиція, агрегація)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Створити клас Нагадувач. Кожні вказані кількості секунд (використати setInterval) програма нагадує про якусь
+					подію (це просто текст) і також виводиться порядковий номер скільки раз вже нагадування було. Зробити так, щоб
+					неможна було зробити одночасно декілька об’єктів-нагадувачів. Методи зупинки таймера, метод зміни повідомлення
+					без зупинки таймера.
+				</div>
+				<script>
+
+					class Reminder {
+						#displayedAmount = 0
+
+						static interval = 2000
+						static ReminderRef
+
+						constructor(message) {
+							if (Reminder.ReminderRef)
+								return Reminder.ReminderRef
+
+							this.interval
+							this.message = message
+							Reminder.ReminderRef = this
+						}
+
+						run() {
+							this.interval = setInterval(() => {
+								this.DisplayedAmount++
+								console.log(`${this.message} Було виведено: ${this.DisplayedAmount}`)
+							}, Reminder.interval);
+						}
+
+						stopInterval() {
+							clearInterval(this.interval)
+						}
+
+						changeMessage(newMessage) {
+							this.message = newMessage
+						}
+
+
+						get DisplayedAmount() {
+							return this.#displayedAmount
+						}
+						set DisplayedAmount(newValue) {
+							this.#displayedAmount = newValue
+						}
+					}
+
+					let msg = new Reminder("Нагадування №1")
+					msg.run()
+
+
+				</script>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

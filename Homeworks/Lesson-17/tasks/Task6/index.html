@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title></title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №15 (Об'єкти. Продовження)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					<img src="img/ht1.png" alt="">
+				</div>
+				<script>
+
+					const interval = parseInt(prompt("Введіть бажаний інтервал для виводу пар для танцю (В мілісекундах)"))
+
+					class Names {
+						constructor(initMaleArray, initFemaleArray) {
+							this.males = initMaleArray
+							this.females = initFemaleArray
+						}
+						// Функція яка повертає довільне число
+						rand(min, max) {
+							min ??= 0
+							max ??= this.males.length
+							return Math.floor(Math.random() * (max - min)) + min
+						}
+
+						// Метод випадкового вибору імені хлопця
+						getRandMale() {
+							return this.males[this.rand()]
+						}
+						// Метод випадкового вибору імені дівчини
+						getRandFemale() {
+							return this.females[this.rand(0, this.females.length)]
+						}
+
+						// Метод виведення пари для танців
+						createCouple() {
+							return `${this.getRandMale()} - ${this.getRandFemale()}`
+						}
+
+						// Метод, який кожні 5 секунд виводить нову пару для танців
+						run(interval) {
+							setInterval(
+								() => document.write(` <p>${this.createCouple()} <br></p>`)
+								, interval)
+						}
+					}
+
+					let femaleNames = ["Emily", "Hannah", "Madison", "Ashley", "Sarah", "Alexis", "Samantha", "Jessica", "Elizabeth", "Taylor", "Lauren", "Alyssa", "Kayla", "Abigail", "Brianna", "Olivia", "Emma", "Megan", "Grace", "Victoria", "Rachel", "Anna", "Sydney", "Destiny", "Morgan", "Jennifer", "Jasmine", "Haley", "Julia", "Kaitlyn", "Nicole", "Amanda", "Katherine", "Natalie", "Hailey", "Alexandra", "Savannah", "Chloe", "Rebecca", "Stephanie", "Maria", "Sophia", "Mackenzie", "Allison", "Isabella", "Amber", "Mary", "Danielle"]
+
+					let maleNames = ["Aaran", "Aaren", "Aarez", "Aarman", "Aaron", "Aaron-James", "Aarron", "Aaryan", "Aaryn", "Aayan", "Aazaan", "Abaan", "Abbas", "Abdallah", "Abdalroof", "Abdihakim", "Abdirahman", "Abdisalam", "Abdul", "Abdul-Aziz", "Abdulbasir", "Abdulkadir", "Abdulkarem", "Abdulkhader", "Abdullah", "Abdul-Majeed", "Abdulmalik", "Abdul-Rehman", "Abdur", "Abdurraheem", "Abdur-Rahman", "Abdur-Rehmaan", "Abel", "Abhinav", "Abhisumant", "Abid"]
+
+					let names = new Names(maleNames, femaleNames)
+					names.run(interval)
+
+				</script>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>
