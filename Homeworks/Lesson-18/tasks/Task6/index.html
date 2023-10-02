@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title></title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №18 (DOM BOM Document)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Задача 6. Користувач задає кількість оцінок і натискає на кнопку «get table». В результаті формується таблиця
+					з input, куди користувач вводить оцінки. Після цього натискає на кнопку “get sum” і знаходить середнє
+					значення.
+				</div>
+
+				<label>
+					Кількість оцінок
+					<input type="number" id="marks" value="5">
+				</label>
+
+				<button id="buttonTable">get table</button>
+				<button id="buttonSum">get sum</button>
+
+				<script>
+
+					function createTable() {
+						let marksAmount = document.querySelector('#marks').value
+
+						let column = marksAmount > 5 ? 5 : marksAmount
+						let row = marksAmount / column
+						let counter = 0
+
+						let tableEl = document.createElement('table')
+						tableEl.className = 'table'
+						for (let i = 0; i < row; i++) {
+							let trEl = document.createElement('tr')
+
+							for (let k = 0; k < column; k++) {
+								let tdEl = document.createElement('td')
+								let input = document.createElement('input')
+								input.setAttribute('type', 'number')
+								input.classList.add('mark-input')
+								tdEl.append(input)
+								trEl.append(tdEl)
+							}
+							tableEl.append(trEl)
+						}
+						document.querySelector('.page__container').append(tableEl)
+					}
+
+					function getAverageMark() {
+						let marksList = document.querySelectorAll('.mark-input')
+						let marksSum = 0
+						console.log(marksList);
+						for (const mark of marksList) {
+							marksSum += parseInt(mark.value)
+						}
+						console.log(marksSum);
+						let average = marksSum / marksList.length
+
+						let p = document.createElement('p')
+						p.innerText = `Середня оцінка учня =${average}`
+						document.querySelector('.page__container').append(p)
+					}
+
+					document.querySelector('#buttonTable').onclick = createTable
+					document.querySelector('#buttonSum').onclick = getAverageMark
+				</script>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

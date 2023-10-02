@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title></title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №18 (DOM BOM Document)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Користувач задає рік народження. Визначити кількість років користувача.
+				</div>
+				<label>
+					Рік народження <input type="num" id="userYearOfBirth">
+				</label>
+				<div id="age">
+					Користувачу <span></span> років
+				</div>
+				<script>
+
+					function calculateUserAge() {
+						const currentYear = new Date().getFullYear();
+						let userAge = currentYear - document.getElementById("userYearOfBirth").value
+
+						document.querySelector('#age>span').innerText = userAge
+					}
+
+					document.querySelector('#userYearOfBirth').onchange = calculateUserAge
+				</script>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

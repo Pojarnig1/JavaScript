@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title></title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №18 (DOM BOM Document)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Користувач задає кількість рядків і стовпців. Відобразити таблицю, у клітинках якої знаходяться числа 1, 2, 3,
+					…
+				</div>
+				<label>
+					Кількість рядків
+					<input type="number" id="row" value="5">
+				</label>
+				<label>
+					Кількість стовпців
+					<input type="number" id="column" value="3">
+				</label>
+				<button id="create-table">Створити таблицю</button>
+
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+
+	</div>
+	<script>
+
+		function createTable() {
+			let row = document.querySelector('#row').value
+			let column = document.querySelector('#column').value
+			let counter = 0
+
+			let tableEl = document.createElement('table')
+			tableEl.className = 'table'
+			for (let i = 0; i < row; i++) {
+				let trEl = document.createElement('tr')
+
+				for (let k = 0; k < column; k++) {
+					let tdEl = document.createElement('td')
+					tdEl.innerText = counter++
+					trEl.append(tdEl)
+				}
+				tableEl.append(trEl)
+			}
+			document.querySelector('.page__container').append(tableEl)
+		}
+
+		document.querySelector('button').onclick = createTable
+
+
+	</script>
+</body>
+
+</html>

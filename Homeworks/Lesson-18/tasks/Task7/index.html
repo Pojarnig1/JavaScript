@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title></title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №18 (DOM BOM Document)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Подорож складається з 3 етапів. На кожному етапі користувач може вибрати один з видів транспорту (авто,
+					автобус, літак - випадаючий список), харчування (сніданок, обід, вечеря – checkbоx) та одного з 3-х
+					гідів(використати - radio buttons). Ціни визначте самі. Підрахувати загальну вартість.
+				</div>
+				<div class="vacation">
+					<label> На якому транспорті будете подорожувати?
+						<select name="transport" id="transport">
+							<option value="300">Автомобіль</option>
+							<option value="250">Автобус</option>
+							<option value="1000">Літак </option>
+						</select>
+					</label>
+					<div class="vacation__feeding">
+						<label><input type="checkbox" name="feeding" checked value="30">Сніданок</label>
+						<label><input type="checkbox" name="feeding" value="50">Обід</label>
+						<label><input type="checkbox" name="feeding" value="50">Вечеря</label>
+					</div>
+
+					<label class="vacation__guide">
+						Виберіть гіда
+						<input type="radio" name="guide" value="250" checked> Олексій
+						<input type="radio" name="guide" value="350"> Андрій
+						<input type="radio" name="guide" value="550"> Валерій
+					</label>
+
+					<button>розрахувати ціну</button>
+				</div>
+
+
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+	<script>
+		function findSum() {
+			let sum = parseFloat(document.querySelector('#transport').value)
+
+			let checkboxList = document.querySelectorAll('[type="checkbox"]')
+			for (const checkbox of checkboxList) {
+				if (checkbox.checked) sum += parseFloat(checkbox.value)
+			}
+
+			let radioList = document.querySelectorAll('[type="radio"]')
+			for (const radio of radioList) {
+				if (radio.checked) {
+					sum += parseFloat(radio.value)
+					break
+				}
+			}
+
+			let pEl = document.createElement('p')
+			pEl.innerText = `Вартість подорожі: ${sum}`
+			document.querySelector('.vacation').after(pEl)
+		}
+
+		document.querySelector('button').onclick = findSum
+	</script>
+</body>
+
+</html>

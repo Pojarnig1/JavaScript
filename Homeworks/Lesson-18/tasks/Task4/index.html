@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title></title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №18 (DOM BOM Document)
+		</header>
+		<main class="page">
+			<div class="page__container" id="vasia">
+				<div class="page__condition">
+					Наперед задано у скрипті масив зі списком бажань. Після завантаження сторінки випадковим чином вибираються 3 і
+					відображаються у окремих div (їх треба створити і додати на сторінку)
+				</div>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+
+		<script>
+			let wishArray = [
+				'Подорожувати по світу і відвідати різні країни та культури.',
+				'Навчитися грати на музичному інструменті, наприклад, на гітарі, фортепіано або скрипці.',
+				'Записати свою власну пісню або написати свою власну книгу.',
+				'Здобути нову професію або отримати ступінь з того, що вас цікавить.',
+				'Знайти свою справжню любов або одружитися з тим, кого ви любите.',
+				'Заснувати свою власну сім’ю або мати дитину.',
+				'Пожертвувати гроші або час на благодійну справу, яка вам близька до серця.',
+				'Пройти марафон або покращити своє фізичне здоров’я та фітнес.',
+				'Навчитися новому хобі або навичці, наприклад, малюванню, фотографуванню або шиттю.',
+				'Зробити щось, чого ви боялися або ніколи не робили раніше, наприклад, стрибки з парашутом, плавання з дельфінами або лазання по скелях.'
+			]
+
+			function getRandNum(min = 0, max = 9) {
+				return min + Math.floor((Math.random() * (max - min + 1)))
+			}
+
+			window.onload = function () {
+				for (let i = 0; i < 3; i++) {
+					let div = document.createElement('div')
+					div.innerText = wishArray[getRandNum()]
+					div.classList.add('wish')
+					document.querySelector('#vasia').append(div)
+				}
+			}
+		</script>
+	</div>
+</body>
+
+</html>

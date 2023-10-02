@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №18 (DOM BOM Document)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Зробити конвертер валют (курси валют – константи у скрипті)
+				</div>
+
+				<div class="rates">
+					<label>Курс євро <input type="number" id="eurRate" value="42"></label>
+					<label>Курс долара <input type="number" id="dollarRate" value="36.6"></label>
+				</div>
+
+
+				<label>
+					Сума в гривнях
+					<input type="number" id="grnSum" value="0">
+				</label>
+				<button>Конвертувати</button>
+				<label>
+					Сума в євро
+					<input type="number" id="euroSum" readonly value="0">
+				</label>
+				<label>
+					Сума в доларах
+					<input type="number" id="dollarSum" readonly value="0">
+				</label>
+
+
+				<script>
+					// //Якщо константами
+					// const eurExcRate = 42.08
+					// const dollarExcRate = 37.78
+
+
+
+					// Якщо з можливостю зміни в реальному часі
+					//--------------------------------------------------------------
+					let dollarInput = document.querySelector('#dollarRate')
+					let eurInput = document.querySelector('#eurRate')
+					let eurExcRate = eurInput.value
+					let dollarExcRate = dollarInput.value
+
+					dollarInput.onchange = () => dollarExcRate = dollarInput.value
+					eurInput.onchange = () => eurExcRate = eurInput.value
+					//---------------------------------------------------------------
+
+
+
+					function exchanger(eurExcRate, dollarExcRate) {
+						let grnSum = parseInt(document.querySelector("#grnSum").value)
+						// eurExcRate = document.querySelector('#eurRate').value
+						// dollarExcRate = document.querySelector('#dollarRate').value
+
+						document.querySelector('#euroSum').value = (grnSum / eurExcRate).toFixed(2)
+						document.querySelector('#dollarSum').value = (grnSum / dollarExcRate).toFixed(2)
+					}
+
+
+					document.querySelector('button').onclick = () => exchanger(eurExcRate, dollarExcRate)
+
+
+				</script>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>
