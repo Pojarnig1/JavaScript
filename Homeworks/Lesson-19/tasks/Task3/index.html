@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title></title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №19 (DOM, BOM, Document, події . Продовження)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Дано 5 випадковим чином згенерованих нумерованих списків з рандомними числами (кількість елементів у списку
+					випадкова від 1 до 10, елементи випадкові – від 1 до 100). При натисненні на кнопку нумеровані списки з парною
+					кількістю елементів зафарбувати у зелений колір, інші у червоний.
+				</div>
+				<div class="lists-container">
+
+				</div>
+				<button id="paint-button">Зафарбувати</button>
+				<script>
+
+					class randomLists {
+						constructor(container, listAmount = 5, minElementsAmount = 1, maxElementsAmount = 10, minElementValue = 1, maxElementValue = 100) {
+							this.listAmount = listAmount
+							this.minElementsAmount = minElementsAmount
+							this.maxElementsAmount = maxElementsAmount
+							this.minElementValue = minElementValue
+							this.maxElementValue = maxElementValue
+							this.container = container
+							this.olList = []
+						}
+
+						getRandNum(min, max) {
+							return min + Math.floor(Math.random() * (max - min + 1))
+						}
+
+						render() {
+							for (let k = 0; k < 5; k++) {
+								let ol = document.createElement('ol')
+								let elementsAmount = this.getRandNum(this.minElementsAmount, this.maxElementsAmount)
+
+								for (let i = 0; i < elementsAmount; i++) {
+									let li = document.createElement('li')
+									li.innerText = this.getRandNum(this.minElementValue, this.maxElementValue)
+									ol.append(li)
+								}
+								this.olList.push(ol)
+								document.querySelector(this.container).append(ol)
+							}
+						}
+
+						paint() {
+							for (const ol of this.olList) {
+								if (ol.children.length % 2 === 0)
+									ol.style.color = 'green'
+								else
+									ol.style.color = 'red'
+							}
+						}
+					}
+
+					let lists = new randomLists('.lists-container')
+					lists.render()
+
+					window.onload = () => {
+						document.querySelector('#paint-button').onclick = lists.paint.bind(lists)
+					}
+				</script>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

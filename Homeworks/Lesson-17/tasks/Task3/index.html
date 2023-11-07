@@ -35,7 +35,6 @@
 							if (Reminder.ReminderRef)
 								return Reminder.ReminderRef
 
-							this.interval
 							this.message = message
 							Reminder.ReminderRef = this
 						}
@@ -60,6 +59,7 @@
 							return this.#displayedAmount
 						}
 						set DisplayedAmount(newValue) {
+							if (newValue < 0) throw new Error("Кількість виведення не може бути менше за нуль")
 							this.#displayedAmount = newValue
 						}
 					}

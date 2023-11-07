@@ -19,7 +19,17 @@ button {
 	font-size: 20px;
 	font-weight: 700;
 	display: block;
-	margin: 20px;
+	border-radius: 20px;
+	background-color: #A4978E;
+	margin: 15px 0;
+}
+
+input {
+	height: 20px;
+	font-size: 18px;
+	font-weight: 700;
+	border-radius: 20px;
+	padding-left: 10px;
 }
 
 .wrapper {
@@ -49,6 +59,45 @@ button {
 	padding: 30px;
 }
 
+.page__condition {
+	margin-bottom: 100px;
+}
+
+.items {
+	display: flex;
+	align-items: center;
+	max-width: 1000px;
+	gap: 25px;
+}
+
+.items__item {}
+
+.item {
+	flex: 1 0 25%;
+}
+
+.item-active {
+	border: 5px solid green;
+}
+
+.item-image {
+	max-height: 500px;
+}
+
+.item-image img {
+	max-width: 100%;
+
+}
+
+.item-title {}
+
+.item-price {}
+
+.buttons {
+	display: flex;
+	gap: 10px;
+	margin: 15px 0;
+}
 
 .footer {
 	text-align: center;
@@ -62,22 +111,19 @@ button {
 .table {
 	width: 100%;
 	margin-bottom: 20px;
+	border: 1px solid #dddddd;
 	border-collapse: collapse;
 }
 
 .table th {
 	font-weight: bold;
-	padding: 555px;
+	padding: 5px;
 	background: #efefef;
-
+	border: 1px solid #dddddd;
 }
 
 .table td {
-	padding: 5px;
-}
-
-.table td input {
-	width: 45px;
-	height: 25px;
 	text-align: center;
+	border: 1px solid #dddddd;
+	padding: 5px;
 }

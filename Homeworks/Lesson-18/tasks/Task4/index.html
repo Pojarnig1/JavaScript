@@ -28,6 +28,7 @@
 		</footer>
 
 		<script>
+
 			let wishArray = [
 				'Подорожувати по світу і відвідати різні країни та культури.',
 				'Навчитися грати на музичному інструменті, наприклад, на гітарі, фортепіано або скрипці.',
@@ -45,14 +46,15 @@
 				return min + Math.floor((Math.random() * (max - min + 1)))
 			}
 
-			window.onload = function () {
-				for (let i = 0; i < 3; i++) {
+			function showWishes(wishesArray, elementsAmount) {
+				for (let i = 0; i < elementsAmount; i++) {
 					let div = document.createElement('div')
 					div.innerText = wishArray[getRandNum()]
 					div.classList.add('wish')
 					document.querySelector('#vasia').append(div)
 				}
 			}
+			window.onload = () => showWishes(wishArray, 2)
 		</script>
 	</div>
 </body>

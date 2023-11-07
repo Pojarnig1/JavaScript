@@ -19,7 +19,18 @@ button {
 	font-size: 20px;
 	font-weight: 700;
 	display: block;
-	margin: 20px;
+	border-radius: 20px;
+	background-color: #A4978E;
+	margin: 15px 0;
+}
+
+input {
+	height: 20px;
+	font-size: 18px;
+	font-weight: 700;
+	border-radius: 20px;
+	padding-left: 10px;
+	max-width: 300px;
 }
 
 .wrapper {
@@ -49,6 +60,21 @@ button {
 	padding: 30px;
 }
 
+.page__condition {
+	margin-bottom: 100px;
+}
+
+.input-list {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+}
+
+.buttons {
+	display: flex;
+	gap: 10px;
+	margin: 15px 0;
+}
 
 .footer {
 	text-align: center;
@@ -57,27 +83,4 @@ button {
 	padding: 10px 0;
 	background-color: rgba(4, 12, 14, 0.95);
 	color: #BE9063;
-}
-
-.table {
-	width: 100%;
-	margin-bottom: 20px;
-	border-collapse: collapse;
-}
-
-.table th {
-	font-weight: bold;
-	padding: 555px;
-	background: #efefef;
-
-}
-
-.table td {
-	padding: 5px;
-}
-
-.table td input {
-	width: 45px;
-	height: 25px;
-	text-align: center;
 }

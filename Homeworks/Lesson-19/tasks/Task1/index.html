@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №19 ( DOM, BOM, Document, події . Продовження)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Дано 10 рядків тексту «Hello!» у окремих div. При кліку на якийсь із них усі наступні повинні бути зафарбовані
+					у червоний колір.
+				</div>
+
+				<div class="container">
+					<div>Hello!</div>
+					<div>Hello!</div>
+					<div>Hello!</div>
+					<div>Hello!</div>
+					<div>Hello!</div>
+					<div>Hello!</div>
+					<div>Hello!</div>
+					<div>Hello!</div>
+					<div>Hello!</div>
+					<div>Hello!</div>
+				</div>
+
+				<script>
+
+					function changeDivColor() {
+						const clickedDiv = this
+						let currentDiv = clickedDiv.nextElementSibling
+
+						while (currentDiv) {
+							currentDiv.style.backgroundColor = 'red'
+							currentDiv = currentDiv.nextElementSibling
+						}
+					}
+
+					window.onload = function () {
+						let divList = document.querySelectorAll('.container>div')
+						for (const div of divList) {
+							div.onclick = changeDivColor
+						}
+					}
+
+				</script>
+
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

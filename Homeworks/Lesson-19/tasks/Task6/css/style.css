@@ -57,27 +57,59 @@ button {
 	padding: 10px 0;
 	background-color: rgba(4, 12, 14, 0.95);
 	color: #BE9063;
-}
-
-.table {
-	width: 100%;
-	margin-bottom: 20px;
-	border-collapse: collapse;
-}
-
-.table th {
-	font-weight: bold;
-	padding: 555px;
-	background: #efefef;
 
 }
 
-.table td {
+.players {
+	margin-top: 100px;
+}
+
+.players__container {
+	display: flex;
+	gap: 250px;
+}
+
+.players__list {}
+
+.list {
+	border: 3px solid #000;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	flex: 1 1 50%;
+}
+
+.player {
+	gap: 10px;
+	border: 3px solid #000;
 	padding: 5px;
+	position: relative;
 }
 
-.table td input {
-	width: 45px;
-	height: 25px;
-	text-align: center;
+.player span {
+	position: absolute;
+	top: 7px;
+	right: 0;
+	display: inline-block;
+	width: 35px;
+	height: 20px;
+	background: url('../img/arrow.png') center 45% /100% no-repeat;
 }
+
+.player span:hover {
+	cursor: pointer;
+	opacity: 0.7;
+}
+
+.players__player {}
+
+.players__tournament-list {}
+
+.players__tournament-list li span {
+	rotate: 180deg;
+}
+
+.tournament-list {}
+
+.tournament-list__player {}

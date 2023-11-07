@@ -49,6 +49,7 @@
 						}
 						subMoney(grnSum) {
 							if (grnSum < 0) throw new Error("Ви не можете віднімати від'ємну суму")
+							if (grnSum > this.Balance) throw new Error("Недостатньо коштів на рахунку")
 							this.Balance -= grnSum
 						}
 

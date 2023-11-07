@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title></title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №19 (DOM, BOM, Document, події . Продовження)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Дано 3 таблиці розмірності 3*3 з випадковими числами. Якщо відбувається клік на якійсь із клітинок, то до
+					відповідної таблиці додається червона рамка (спробуйте додати можливість відображення кількості кліків біля
+					назви таблиці з використанням відповідно доданого для цього атрибута).
+				</div>
+				<div class="table-container"></div>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+
+		<script>
+			class Table {
+				constructor(rows = 3, columns = 3, minNumber = 1, maxNumber = 100) {
+					this.rows = rows
+					this.columns = columns
+					this.minNumber = minNumber
+					this.maxNumber = maxNumber
+				}
+
+				getRandNum(min, max) {
+					min ??= this.minNumber
+					max ??= this.maxNumber
+					return min + Math.floor(Math.random() * (max - min + 1))
+				}
+				render(container) {
+
+					let tableContainer = document.createElement('div')
+					let tableTitle = document.createElement('div')
+					tableContainer.append(tableTitle)
+
+					let table = document.createElement('table')
+					table.setAttribute('clickCount', 0)
+					for (let i = 0; i < this.rows; i++) {
+						let tr = document.createElement('tr')
+						for (let k = 0; k < this.columns; k++) {
+							let td = document.createElement('td')
+							td.innerText = this.getRandNum()
+							tr.append(td)
+						}
+						table.append(tr)
+					}
+					tableContainer.append(table)
+					document.querySelector(container).append(tableContainer)
+
+				}
+
+				paint() {
+					let clickedCell = this
+					clickedCell.style.border = '3px solid red'
+
+					// Кол-во кликов считается и заносится в атрибут к каждой таблице, но пока не придумал как можно выводить эти значения рядом с таблицей.
+					let prevClickCount = parseInt(clickedCell.closest('table').getAttribute('clickCount'))
+					clickedCell.closest('table').setAttribute('clickCount', prevClickCount + 1)
+					console.log(clickedCell.closest('table').getAttribute('clickCount'))
+
+					let table = clickedCell.closest('table')
+					console.log(table.previousElementSibling);
+					table.previousElementSibling.innerText = `Click counter: ${prevClickCount + 1} `
+				}
+			}
+
+			let table1 = new Table()
+			let table2 = new Table()
+			let table3 = new Table()
+			table1.render('.table-container')
+			table2.render('.table-container')
+			table3.render('.table-container')
+
+			window.onload = () => {
+				let tdList = document.querySelectorAll('td')
+				for (const td of tdList) {
+					td.onclick = table1.paint
+				}
+			}
+		</script>
+	</div>
+</body>
+
+</html>

@@ -20,6 +20,8 @@ button {
 	font-weight: 700;
 	display: block;
 	margin: 20px;
+	border-radius: 20px;
+	text-transform: uppercase;
 }
 
 .wrapper {
@@ -59,25 +61,41 @@ button {
 	color: #BE9063;
 }
 
-.table {
-	width: 100%;
-	margin-bottom: 20px;
-	border-collapse: collapse;
+.vacation {
+	display: flex;
+	flex-direction: column;
 }
 
-.table th {
-	font-weight: bold;
-	padding: 555px;
-	background: #efefef;
-
+.vacation select {
+	width: 100px;
+	height: 28px;
 }
 
-.table td {
-	padding: 5px;
+.vacation__feeding {
+	margin: 20px;
+	display: flex;
+	align-items: flex-start;
+	gap: 13px;
+	flex-direction: column;
 }
 
-.table td input {
-	width: 45px;
-	height: 25px;
-	text-align: center;
+.vacation__feeding label {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+
+.vacation__feeding input {
+	display: block;
+	width: 20px;
+	height: 20px;
+}
+
+.vacation__guide {
+	margin: 20px;
+}
+
+.vacation__guide input {
+	width: 20px;
+	height: 20px;
 }

@@ -40,7 +40,7 @@
 	</div>
 	<script>
 
-		function createTable() {
+		function createTable(container) {
 			let row = document.querySelector('#row').value
 			let column = document.querySelector('#column').value
 			let counter = 0
@@ -57,10 +57,10 @@
 				}
 				tableEl.append(trEl)
 			}
-			document.querySelector('.page__container').append(tableEl)
+			document.querySelector(container).append(tableEl)
 		}
 
-		document.querySelector('button').onclick = createTable
+		document.querySelector('button').onclick = () => createTable('.page__container')
 
 
 	</script>

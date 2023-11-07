@@ -34,34 +34,34 @@
 				</div>
 				<label> Результат <input type="number" value="0" id="result"></label>
 				<script>
-					function addNumbers() {
+
+
+					function calculator(operation) {
 						let num1 = parseInt(document.querySelector('#first').value)
 						let num2 = parseInt(document.querySelector('#second').value)
-						document.getElementById('result').value = num1 + num2
-					}
+						let result = 0
+						switch (operation) {
+							case '+': result = num1 + num2
+								break;
+							case '-': result = num1 - num2
+								break;
+							case '*': result = num1 * num2
+								break;
+							case '/': result = num1 / num2
+								break;
 
-					function subtractNumbers() {
-						let num1 = parseInt(document.querySelector('#first').value)
-						let num2 = parseInt(document.querySelector('#second').value)
-						document.getElementById('result').value = num1 - num2
-
-					}
-					function multiplyNumbers() {
-						let num1 = parseInt(document.querySelector('#first').value)
-						let num2 = parseInt(document.querySelector('#second').value)
-						document.getElementById('result').value = num1 * num2
-
-					}
-					function divideNumbers() {
-						let num1 = parseInt(document.querySelector('#first').value)
-						let num2 = parseInt(document.querySelector('#second').value)
-						document.getElementById('result').value = num1 / num2
+							default: throw new Error('Помилка обчислення')
+								break;
+						}
+						console.log(result);
+						document.getElementById('result').value = result
 
 					}
-					document.getElementById("add").onclick = addNumbers;
-					document.getElementById("subtract").onclick = subtractNumbers;
-					document.getElementById("multiply").onclick = multiplyNumbers;
-					document.getElementById("divide").onclick = divideNumbers;
+
+					document.getElementById("add").onclick = () => calculator('+');
+					document.getElementById("subtract").onclick = () => calculator('-');
+					document.getElementById("multiply").onclick = () => calculator('*');
+					document.getElementById("divide").onclick = () => calculator('/');
 
 				</script>
 			</div>

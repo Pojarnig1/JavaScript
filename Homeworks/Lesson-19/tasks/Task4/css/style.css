@@ -22,6 +22,24 @@ button {
 	margin: 20px;
 }
 
+table {
+	border: 2px solid #000;
+	font-size: 50px;
+}
+
+
+td {
+	border: 3px solid #000;
+}
+
+.table-container {
+	display: flex;
+	gap: 100px;
+	align-items: center;
+	justify-content: center;
+	margin-top: 50px;
+}
+
 .wrapper {
 	min-height: 100%;
 	overflow: clip;
@@ -49,6 +67,13 @@ button {
 	padding: 30px;
 }
 
+.wish {
+	background-color: #4c3b2e21;
+	border-radius: 20px;
+	padding: 10px 0;
+	margin: 40px 20px;
+	text-align: center;
+}
 
 .footer {
 	text-align: center;
@@ -57,27 +82,4 @@ button {
 	padding: 10px 0;
 	background-color: rgba(4, 12, 14, 0.95);
 	color: #BE9063;
-}
-
-.table {
-	width: 100%;
-	margin-bottom: 20px;
-	border-collapse: collapse;
-}
-
-.table th {
-	font-weight: bold;
-	padding: 555px;
-	background: #efefef;
-
-}
-
-.table td {
-	padding: 5px;
-}
-
-.table td input {
-	width: 45px;
-	height: 25px;
-	text-align: center;
 }

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title></title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №19 (DOM BOM Document продовження)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Відображаємо картки товарів, які користувач може вибирати. Вибраний товар має зелену рамку (при кліку робити
+					toogle з класом вибраного елемента)
+				</div>
+
+				<div class="items">
+					<div class="items__item item">
+						<div class="item-image">
+							<img src="img/laptops/laptop1.png" alt="">
+						</div>
+						<div class="item-title">Laptop1</div>
+						<div class="item-price">30000</div>
+					</div>
+					<div class="items__item item">
+						<div class="item-image">
+							<img src="img/laptops/laptop2.jpg" alt="">
+						</div>
+						<div class="item-title">Laptop2</div>
+						<div class="item-price">40000</div>
+					</div>
+					<div class="items__item item">
+						<div class="item-image">
+							<img src="img/laptops/laptop3.webp" alt="">
+						</div>
+						<div class="item-title">Laptop3</div>
+						<div class="item-price">20000</div>
+					</div>
+					<div class="items__item item">
+						<div class="item-image">
+							<img src="img/laptops/laptop4.jpg" alt="">
+						</div>
+						<div class="item-title">Laptop4</div>
+						<div class="item-price">35000</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+
+	</div>
+	<script>
+		function activeItem() {
+			let item = this
+
+			item.classList.toggle('item-active')
+		}
+
+		window.onload = () => {
+			let itemsList = document.querySelectorAll('.item')
+			for (const item of itemsList) {
+				item.onclick = activeItem
+			}
+		}
+	</script>
+</body>
+
+</html>

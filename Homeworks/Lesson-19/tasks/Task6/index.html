@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title></title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №19 (DOM BOM Document Продовження)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Задача №6 Дано список спортсменів. Потрібно сформувати список тих, які будуть брати участь у змаганні. При
+					цьому є два
+					стовпці. В одному відображені всі спортсмени, в іншому – список тих, хто був вибраний. При натисканні на
+					зелену стрілку спортсмен переміщається у список для змагань. При натисканні на червону стрілку спортсмен
+					переміщається у загальний список.
+
+				</div>
+
+
+				<div class="players">
+					<div class="players__container">
+
+						<ul class="players__list list">
+							<li class="players__player player">Andrii Shevchenko <span></span></li>
+							<li class="players__player player">Volodymyr Ovcharenko <span></span></li>
+							<li class="players__player player">Oleksandr Zadverniiak <span></span></li>
+							<li class="players__player player">Vasilii Goncharuk <span></span></li>
+							<li class="players__player player">Oleg Polishuk <span></span></li>
+							<li class="players__player player">Ivan Linii <span></span></li>
+							<li class="players__player player">Pele <span></span></li>
+						</ul>
+
+						<ul class="players__tournament-list tournament-list list">
+							<li class="tournament-list__player player">Vania <span></span></li>
+						</ul>
+
+					</div>
+				</div>
+
+				<script>
+
+					function changePlayerInTournament() {
+						let btn = this
+						let player = btn.parentElement
+						let playersList = document.querySelector('.players__list')
+						let tournamentPlayersList = document.querySelector('.players__tournament-list')
+
+						console.log(player);
+
+						if (player.closest('.players__list')) {
+							player.className = 'tournament-list__player player'
+							tournamentPlayersList.append(player)
+						}
+						else if (player.closest('.players__tournament-list')) {
+							player.className = 'players__player player'
+							playersList.append(player)
+						}
+					}
+
+
+					window.onclick = () => {
+						let buttonList = document.querySelectorAll('.player>span')
+						for (const btn of buttonList) {
+							btn.onclick = changePlayerInTournament
+						}
+					}
+				</script>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>
