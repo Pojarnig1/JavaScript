@@ -13,39 +13,15 @@
 <body>
 	<div class="wrapper">
 		<header class="header">
-			Урок №18 (DOM BOM Document)
+			Урок №19 (DOM BOM Document Продовження)
 		</header>
 		<main class="page">
 			<div class="page__container">
 				<div class="page__condition">
-					Подорож складається з 3 етапів. На кожному етапі користувач може вибрати один з видів транспорту (авто,
-					автобус, літак - випадаючий список), харчування (сніданок, обід, вечеря – checkbоx) та одного з 3-х
-					гідів(використати - radio buttons). Ціни визначте самі. Підрахувати загальну вартість.
+					Відобразити падаючий сніг. Сніжинка з’являється у верхній частині екрану (top =0) і з випадковою швидкістю
+					рухається вниз (у setInterval викликати метод, у якому додавати крок до top). Як тільки сніжинка досягає
+					нижньої частини екрану (top>maxTop) вона знову повинна з’явитись у верхній частині екрану (top=0).
 				</div>
-				<div class="vacation">
-					<label> На якому транспорті будете подорожувати?
-						<select name="transport" id="transport">
-							<option value="300">Автомобіль</option>
-							<option value="250">Автобус</option>
-							<option value="1000">Літак </option>
-						</select>
-					</label>
-					<div class="vacation__feeding">
-						<label><input type="checkbox" name="feeding" checked value="30">Сніданок</label>
-						<label><input type="checkbox" name="feeding" value="50">Обід</label>
-						<label><input type="checkbox" name="feeding" value="50">Вечеря</label>
-					</div>
-
-					<label class="vacation__guide">
-						Виберіть гіда
-						<input type="radio" name="guide" value="250" checked> Олексій
-						<input type="radio" name="guide" value="350"> Андрій
-						<input type="radio" name="guide" value="550"> Валерій
-					</label>
-
-					<button>розрахувати ціну</button>
-				</div>
-
 
 			</div>
 		</main>
@@ -54,28 +30,44 @@
 		</footer>
 	</div>
 	<script>
-		function findSum() {
-			let sum = parseFloat(document.querySelector('#transport').value)
-
-			let checkboxList = document.querySelectorAll('[type="checkbox"]')
-			for (const checkbox of checkboxList) {
-				if (checkbox.checked) sum += parseFloat(checkbox.value)
+		class SnowFlake {
+			getRandNum(min, max) {
+				return min + Math.floor(Math.random() * (max - min + 1))
 			}
 
-			let radioList = document.querySelectorAll('[type="radio"]')
-			for (const radio of radioList) {
-				if (radio.checked) {
-					sum += parseFloat(radio.value)
-					break
+			createSnowFlake() {
+				this.snowFlake = document.createElement('div')
+				this.snowFlake.className = "snowFlake"
+				this.snowFlake.style.left = this.getRandNum(0, innerWidth - 50) + 'px'
+				document.querySelector('.page__container').append(this.snowFlake)
+			}
+
+			startMotion() {
+				let style = getComputedStyle(this.snowFlake)
+				let position = parseInt(style.top)
+				let maxTop = innerHeight - 100
+				this.snowFlake.style.top = position + 50 + 'px'
+				// console.log(position);
+				if (position > maxTop) {
+					this.snowFlake.style.top = 0
 				}
 			}
 
-			let pEl = document.createElement('p')
-			pEl.innerText = `Вартість подорожі: ${sum}`
-			document.querySelector('.vacation').after(pEl)
+			run() {
+				let randTime = this.getRandNum(100, 2000)
+				setInterval(this.startMotion.bind(this), randTime)
+			}
 		}
 
-		document.querySelector('button').onclick = findSum
+		// let s1 = new SnowFlake
+		// s1.createSnowFlake()
+		// s1.run()
+
+		for (let i = 0; i < 10; i++) {
+			let s = new SnowFlake
+			s.createSnowFlake()
+			s.run()
+		}
 	</script>
 </body>
 

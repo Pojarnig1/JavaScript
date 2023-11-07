@@ -61,41 +61,11 @@ button {
 	color: #BE9063;
 }
 
-.vacation {
-	display: flex;
-	flex-direction: column;
-}
-
-.vacation select {
-	width: 100px;
-	height: 28px;
-}
-
-.vacation__feeding {
-	margin: 20px;
-	display: flex;
-	align-items: flex-start;
-	gap: 13px;
-	flex-direction: column;
-}
-
-.vacation__feeding label {
-	display: flex;
-	align-items: center;
-	gap: 20px;
-}
-
-.vacation__feeding input {
-	display: block;
-	width: 20px;
-	height: 20px;
-}
-
-.vacation__guide {
-	margin: 20px;
-}
-
-.vacation__guide input {
-	width: 20px;
-	height: 20px;
+.snowFlake {
+	position: absolute;
+	top: 0;
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	background: url('../img/snowflake.png') center / cover no-repeat;
 }
