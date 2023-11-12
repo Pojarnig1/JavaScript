@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title></title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №19 (Практика. Події - продовження)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					На формі вводять 7 числових значень (вік, зріст, вага, заробітна плата, стаж, номер відділу, порядковий
+					номер). Додати подію обробки події click на форму і якщо клік на внутрішньому input, то автоматично замінювати
+					значення його на 0. Використати делегування
+
+				</div>
+
+				<form action="#">
+					<div>Вік: <input type="number" placeholder="Вік"></div>
+					<div>Зріст: <input type="number" placeholder="Зріст"></div>
+					<div>Вага <input type="number" placeholder="Вага"></div>
+					<div>Заробітня плата: <input type="number" placeholder="Заробітня плата"></div>
+					<div>Стаж: <input type="number" placeholder="Стаж"></div>
+					<div>Номер відділу: <input type="number" placeholder="Номер відділу"></div>
+					<div>Порядковий номер: <input type="number" placeholder="Порядковий номер"></div>
+				</form>
+				<script>
+
+					function changeInputValue(e) {
+						if (e.target.tagName === 'INPUT') {
+							e.target.value = 0
+						}
+					}
+
+					document.querySelector('form').addEventListener('click', changeInputValue)
+				</script>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

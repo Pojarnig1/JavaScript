@@ -38,14 +38,14 @@
 			createSnowFlake() {
 				this.snowFlake = document.createElement('div')
 				this.snowFlake.className = "snowFlake"
-				this.snowFlake.style.left = this.getRandNum(0, innerWidth - 50) + 'px'
+				this.snowFlake.style.left = this.getRandNum(0, innerWidth) + 'px'
 				document.querySelector('.page__container').append(this.snowFlake)
 			}
 
 			startMotion() {
 				let style = getComputedStyle(this.snowFlake)
 				let position = parseInt(style.top)
-				let maxTop = innerHeight - 100
+				let maxTop = innerHeight
 				this.snowFlake.style.top = position + 50 + 'px'
 				// console.log(position);
 				if (position > maxTop) {

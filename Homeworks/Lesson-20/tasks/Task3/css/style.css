@@ -12,7 +12,6 @@ body {
 	background-color: #BE9063;
 	font-size: 25px;
 	font-weight: 700;
-	overflow: hidden;
 }
 
 button {
@@ -20,9 +19,22 @@ button {
 	font-size: 20px;
 	font-weight: 700;
 	display: block;
-	margin: 20px;
 	border-radius: 20px;
-	text-transform: uppercase;
+	background-color: #A4978E;
+	margin: 15px 0;
+}
+
+input {
+	height: 20px;
+	font-size: 18px;
+	font-weight: 700;
+	border-radius: 20px;
+	padding-left: 10px;
+}
+
+span {
+	color: red;
+	font-weight: 700;
 }
 
 .wrapper {
@@ -52,6 +64,20 @@ button {
 	padding: 30px;
 }
 
+.page__condition {
+	margin-bottom: 100px;
+}
+
+.lists-container {
+	display: flex;
+	justify-content: space-between;
+}
+
+.buttons {
+	display: flex;
+	gap: 10px;
+	margin: 15px 0;
+}
 
 .footer {
 	text-align: center;
@@ -62,14 +88,8 @@ button {
 	color: #BE9063;
 }
 
-
-
-.snowFlake {
-	position: absolute;
-	top: 0;
-	display: inline-block;
-	width: 50px;
-	height: 50px;
-	background: url('../img/snowflake.png') center / cover no-repeat;
-	overflow: hidden;
+form {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
 }

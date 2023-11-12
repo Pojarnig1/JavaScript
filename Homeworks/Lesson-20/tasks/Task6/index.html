@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title></title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №20 (Практика. Події - продовження)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Дано список автомобілів (марка, рік випуску, ціна). Сформувати елементи для фільтрування з використанням
+					випадаючого списку (контент цих випадаючих списків сформувати у залежності від переданого списку).
+
+				</div>
+				<script>
+
+
+
+
+					// Подумати як зробити так, щоб фільтр враховував одразу два селекти
+					// Коли спрацьовує лістенер на якомусь інпуті в функцію списку потрібно 
+					// передавати значення всіх інпутів
+					// або запам'ятовувати вже вибрані інпути
+
+					// Розробляємо селекти
+					class Filter {
+						constructor(optionsList, title, containerClassName) {
+							this.optionsList = optionsList
+							this.title = title
+							this.containerClassName = containerClassName
+						}
+
+						onChange() {
+							let event = new CustomEvent('filterChanged', {
+								detail: {
+									value: this.select.value,
+									// selectName: this.containerClassName
+								}
+							})
+							this.select.dispatchEvent(event)
+						}
+						render(container) {
+							let cnt = document.createElement('div')
+							cnt.className = 'filter__' + this.containerClassName + ' ' + this.containerClassName + '-filter'
+							console.log(cnt);
+							let title = document.createElement('div')
+							title.className = this.containerClassName + '-filter__title'
+							title.innerText = this.title
+							cnt.append(title)
+
+							let select = document.createElement('select')
+							select.className = this.containerClassName + '-filter__select'
+							cnt.append(select)
+							for (let i = 0; i < this.optionsList.length; i++) {
+								let option = document.createElement('option')
+								option.innerText = this.optionsList[i]
+								select.append(option)
+							}
+							let option = document.createElement('option')
+							option.innerText = 'none'
+							option.setAttribute('selected', 'true')
+							select.append(option)
+
+
+							this.select = select
+							document.querySelector(container).append(cnt)
+							select.onchange = this.onChange.bind(this)
+						}
+					}
+					let autoList = [
+
+						{
+							brand: "Mercedes",
+							year: 2018,
+							price: 25000,
+						},
+						{
+							brand: "Opel",
+							year: 2000,
+							price: 5000,
+						},
+						{
+							brand: "Opel",
+							year: 2004,
+							price: 15000,
+						},
+						{
+							brand: "Audi",
+							year: 2000,
+							price: 7000,
+						},
+					]
+
+					class Cars {
+						constructor(carList) {
+							this.carList = carList
+							this.carsElArray = []
+						}
+						filter(e) {
+							let currentChoosedFilterValue = e.detail.value.toUpperCase()
+
+
+							for (const p of this.carsElArray) {
+								let pText = p.innerText.toUpperCase()
+
+								if (pText.includes(currentChoosedFilterValue) || currentChoosedFilterValue === 'NONE')
+									p.style.display = 'block'
+								else
+									p.style.display = 'none'
+							}
+
+						}
+						render(container) {
+							this.cnt = document.querySelector(container)
+							for (const carObj of this.carList) {
+								let p = document.createElement('p')
+								p.innerText = `${carObj.brand} - ${carObj.year}р. - ${carObj.price}$`;
+								this.cnt.append(p)
+								this.carsElArray.push(p)
+							}
+						}
+					}
+
+					//Потім зробити так, щоб фільри робились з тих марок та років які існують в об'єкті autoList
+					window.onload = () => {
+						let brandFilter = new Filter(['Audi', 'Mercedes', 'Opel'], 'Марка', 'brand',)
+						let yearFilter = new Filter([2000, 2004, 2018], 'Рік', 'year',)
+						brandFilter.render('.filter__container')
+						yearFilter.render('.filter__container')
+						let cars = new Cars(autoList)
+						cars.render('.list')
+						// Зробити за допомогою делегування  ??????
+						brandFilter.select.addEventListener('filterChanged', cars.filter.bind(cars))
+						yearFilter.select.addEventListener('filterChanged', cars.filter.bind(cars))
+					}
+				</script>
+
+				<div class="filter">
+					Фільтр пошуку
+					<div class="filter__container">
+						<!-- Формується в js -->
+					</div>
+				</div>
+
+				<div class="list">
+					<!-- Формується в js -->
+
+				</div>
+
+
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+	<title>Document</title>
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №20 (Практика. Події - продовження)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Байрактар. З верхньої частини екрану у випадковій позиції по горизонталі з’являються танки, які їдуть вниз.
+					При кліку на танк він вибухає і зникає з екрану.
+
+				</div>
+
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+	<script>
+
+		class Tank {
+			constructor(imgPath, explosionPath, tankSpeed = 40) {
+				this.imgPath = imgPath
+				this.tankSpeed = tankSpeed
+				this.explosionPath = explosionPath
+				this.isMoving = true
+			}
+
+			move() {
+				if (this.isMoving) {
+					let tankPosition = parseInt(this.tank.style.top)
+					this.tank.style.top = tankPosition + 2 + 'px'
+					if (tankPosition > innerHeight)
+						this.tank.remove()
+				}
+			}
+
+			onClick() {
+
+				this.isMoving = false
+				this.tank.setAttribute('src', this.explosionPath)
+				setTimeout(() => {
+					this.tank.remove()
+				}, 700)
+
+			}
+			getRandomNum(min = -250, max = -100) {
+				return min + Math.floor(Math.random() * (max - min + 1))
+			}
+
+			render(container) {
+				const tank = document.createElement('img')
+				tank.className = 'tank'
+				tank.setAttribute('src', this.imgPath)
+				if (container)
+					document.querySelector(container).append(tank)
+				tank.style.top = this.getRandomNum() + 'px'
+				tank.style.left = this.getRandomNum(0, innerWidth) + 'px'
+
+				this.intervalId = setInterval(() => {
+					this.move()
+				}, this.tankSpeed)
+
+				this.tank = tank
+				this.tank.addEventListener('click', this.onClick.bind(this))
+			}
+		}
+
+		class Game {
+			constructor(tankAmount, tankSpeed) {
+				this.tankAmount = tankAmount
+				this.tankSpeed = tankSpeed
+			}
+			createGame() {
+				for (let i = 0; i < this.tankAmount; i++) {
+					let tank = new Tank('img/tank_red.png', 'img/explosion.png')
+					tank.render('.page__container')
+				}
+			}
+
+		}
+
+		let game = new Game(10, 30)
+		game.createGame()
+
+
+	</script>
+
+</body>
+
+</html>
