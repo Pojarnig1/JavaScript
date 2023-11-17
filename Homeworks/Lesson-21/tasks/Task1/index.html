@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №21 ( Успадкування. Обробка виключних ситуацій (помилок))
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Створити клас Client
+					та на основі цього класу створити клас GoldenClient <br>
+					Створити клас Bank, у якому зберігається масив клієнтів. Виконати такі операції<br>
+					Вивести усіх простих клієнтів;<br>
+					Вивести усіх клієнтів GoldenClient;<br>
+					Знати сумарну кількість грошей на рахунку;
+
+				</div>
+
+				<script>
+
+					class IsNegativeNumberError extends Error {
+						constructor() {
+							super()
+							this.message = "Сума не може бути від'ємною"
+							this.name = "IsNegativeNumberError"
+						}
+					}
+
+					class Client {
+						constructor(id, name, moneyAmount) {
+							this.id = id
+							this.name = name
+							this.moneyAmount = moneyAmount
+						}
+
+						depositMoney(depositAmout) {
+							if (depositAmout < 0)
+								throw new IsNegativeNumberError()
+							this.moneyAmount += depositAmout
+						}
+						withdrawMoney(withdrawalSize) {
+							if (withdrawalSize < 0)
+								throw new IsNegativeNumberError()
+							this.moneyAmount -= withdrawalSize
+						}
+						toString() {
+							return `${this.id} - ${this.name} - ${this.moneyAmount}$`
+						}
+					}
+
+					class GoldenClient extends Client {
+						constructor(id, name, moneyAmount, creditLimit, creditCostInterest) {
+							super(id, name, moneyAmount)
+							this.creditLimit = creditLimit
+							this.creditCostInterest = creditCostInterest
+						}
+
+						penaltyDetermination(determinationDays, determinationSum) {
+							this.moneyAmount -= determinationSum * (this.creditCostInterest / 100) * determinationDays
+
+						}
+
+					}
+					class Bank {
+						constructor(clietsList) {
+							this.clientsList = clietsList
+						}
+
+						displayAllSimpleClients() {
+							let simpleClientsList = []
+							let goldenClientsList = []
+							for (const client of this.clientsList) {
+								if (client instanceof GoldenClient) {
+									simpleClientsList.push(client)
+								}
+								else {
+									goldenClientsList.push(client)
+								}
+							}
+
+							console.log(simpleClientsList)
+							console.log(goldenClientsList)
+						}
+						findGlobalSum() {
+							return this.clientsList.reduce((sum, client) => sum + client.moneyAmount, 0)
+
+						}
+					}
+
+					let a = new Client(3331, 'Vania', 33333, 2000, 2)
+					console.log(a)
+					let clientsArr = [
+						new Client(3331, 'Vania', 33333, 2000, 2),
+						new Client(3331, 'Vania', 33333, 2000, 2),
+						new GoldenClient(1123, 'Gold', 123123, 1),
+						new Client(3331, 'Vania', 33333, 2000, 2),
+						new Client(3331, 'Vania', 33333, 2000, 2),
+						new GoldenClient(1123, 'Gold', 123123, 1),
+						new Client(3331, 'Vania', 33333, 2000, 2),
+						new GoldenClient(1123, 'Gold', 123123, 1),
+						new GoldenClient(1123, 'Gold', 123123, 1),
+						new Client(3331, 'Vania', 33333, 2000, 2),
+						new Client(3331, 'Vania', 33333, 2000, 2),
+						new Client(3331, 'Vania', 33333, 2000, 2),
+						new GoldenClient(1123, 'Gold', 123123, 1),
+					]
+
+					let bank = new Bank(clientsArr)
+					bank.displayAllSimpleClients()
+					console.log(bank.findGlobalSum());
+				</script>
+
+
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

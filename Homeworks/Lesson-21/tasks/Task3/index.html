@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title></title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №21 (Успадкування. Обробка виключних ситуацій (помилок))
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Користувач задає місяць навчання учня (перевіряти чи є числом, чи від 1 до 12, чи не канікули) та оцінку
+					(перевіряти чи є числом, чи від 1 до 100). Вивести чи зможе він виправити оцінку (якщо оцінка погана і це не
+					останній місяць у семестрі) . Обробку усіх помилок зробити з використанням відповідних класів.
+				</div>
+
+				<form action="#">
+					<input type="text" id="input-month" placeholder="Місяць навчання">
+					<input type="text" id="input-mark" placeholder="Оцінкка">
+					<button id="check-button" type="button">Check</button>
+				</form>
+
+				<script>
+					class MonthIsTooLowError extends Error {
+						constructor(min) {
+							super()
+							this.message = "Місяць не може бути низчим за" + min
+							this.name = "MonthIsTooLowError"
+						}
+					}
+					class MonthIsTooHighError extends Error {
+						constructor(max) {
+							super()
+							this.message = "Місяць не може бути більшим за" + max
+							this.name = "MonthIsTooHighError"
+						}
+					}
+					class MarkIsTooLowError extends Error {
+						constructor(min) {
+							super()
+							this.message = "Оцінка не може бути нижчою за" + min
+							this.name = "MarkIsTooLowError"
+						}
+					}
+					class MarkIsTooHighError extends Error {
+						constructor(max) {
+							super()
+							this.message = "Оцінка не може бути вишчою за" + max
+							this.name = "MarkIsTooHighError"
+						}
+					}
+					function canUserCorrectMark() {
+						let inputMonth = document.querySelector('#input-month').value
+						let inputMark = document.querySelector('#input-mark').value
+						try {
+							if (inputMonth < 1) throw new MonthIsTooLowError(1)
+							else if (inputMonth > 12) throw new MonthIsTooHighError(12)
+
+							if (inputMark < 1) throw new MarkIsTooLowError(1)
+							else if (inputMark > 100) throw new MarkIsTooHighError(100)
+						} catch (err) {
+							alert(err.name + err.message)
+						}
+					}
+
+					let btn = document.querySelector('#check-button')
+					btn.addEventListener('click', canUserCorrectMark)
+
+				</script>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

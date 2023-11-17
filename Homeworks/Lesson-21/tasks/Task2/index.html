@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+	<title>Document</title>
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №21 ( Успадкування. Обробка виключних ситуацій (помилок))
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Розробити класи
+				</div>
+				<div class="page__elements">
+
+				</div>
+			</div>
+
+			<script>
+				class ParentClass {
+					constructor(x, y, url, interval) {
+						this.x = x
+						this.y = y
+						this.url = url
+						this.interval = interval
+					}
+					getRandNum(min = 0, max = 100) {
+						return min + Math.floor(Math.random() * (max - min + 1))
+					}
+					render(container) {
+						let el = document.createElement('img')
+						el.setAttribute('src', this.url)
+						el.className = 'element'
+						el.style.top = this.x + 'px'
+						el.style.left = this.y + 'px'
+						document.querySelector(container).append(el)
+						this.el = el
+					}
+					update() {
+						throw new Error("Method update should be implemented")
+					}
+					run() {
+						setInterval(this.update.bind(this), this.interval)
+					}
+				}
+
+				class House extends ParentClass {
+					constructor(x, y, url, interval) {
+						super(x, y, url, interval)
+					}
+					update() {
+						let elWidth = parseInt(getComputedStyle(this.el).width)
+						this.el.style.width = elWidth + 10 + 'px'
+					}
+				}
+				class Dog extends ParentClass {
+					constructor(x, y, url, interval) {
+						super(x, y, url, interval)
+					}
+					update() {
+						let prevLeft = parseInt(this.el.style.left)
+						this.el.style.left = prevLeft + 10 + 'px'
+					}
+				}
+				class Bird extends ParentClass {
+					constructor(x, y, url, interval) {
+						super(x, y, url, interval)
+					}
+					update() {
+						let randStep = this.getRandNum(-100, 100)
+						if (this.getRandNum(0, 1)) {
+							let prevLeft = parseInt(this.el.style.left)
+							this.el.style.left = prevLeft + randStep + 'px'
+						}
+						else {
+							let prevTop = parseInt(this.el.style.top)
+							this.el.style.top = prevTop + randStep + 'px'
+						}
+					}
+				}
+				let bird = new Bird(300, 430, 'img/bird.jpg', 500)
+				bird.render('.page__elements')
+				bird.run()
+
+				let h = new House(100, 230, 'img/tank_red.png', 500)
+				h.render('.page__elements')
+				h.run()
+
+
+				let dog = new Dog(200, 430, 'img/dog.jpg', 500)
+				dog.render('.page__elements')
+				dog.run()
+			</script>
+
+
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+	<script>
+
+	</script>
+
+</body>
+
+</html>
