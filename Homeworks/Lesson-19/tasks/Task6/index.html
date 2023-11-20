@@ -50,7 +50,7 @@
 				<script>
 
 					function changePlayerInTournament(e) {
-						let btn = event.target
+						let btn = e.target
 						if (btn.tagName === "SPAN") {
 							let player = btn.parentElement
 							let playersList = btn.closest("ul[class^= 'players']")
