@@ -49,30 +49,25 @@
 
 				<script>
 
-					function changePlayerInTournament() {
-						let btn = this
-						let player = btn.parentElement
-						let playersList = document.querySelector('.players__list')
-						let tournamentPlayersList = document.querySelector('.players__tournament-list')
+					function changePlayerInTournament(e) {
+						let btn = event.target
+						if (btn.tagName === "SPAN") {
+							let player = btn.parentElement
+							let playersList = btn.closest("ul[class^= 'players']")
 
-						console.log(player);
-
-						if (player.closest('.players__list')) {
-							player.className = 'tournament-list__player player'
-							tournamentPlayersList.append(player)
-						}
-						else if (player.closest('.players__tournament-list')) {
-							player.className = 'players__player player'
-							playersList.append(player)
+							if (playersList.className.includes("players__list")) {
+								playersList.nextElementSibling.append(player)
+							}
+							else {
+								playersList.previousElementSibling.append(player)
+							}
 						}
 					}
 
 
 					window.onload = () => {
-						let buttonList = document.querySelectorAll('.player>span')
-						for (const btn of buttonList) {
-							btn.onclick = changePlayerInTournament
-						}
+						let playersCnt = document.querySelector('.players__container')
+						playersCnt.addEventListener("click", changePlayerInTournament)
 					}
 				</script>
 			</div>
