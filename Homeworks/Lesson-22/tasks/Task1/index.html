@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №22 (Практика. Використання типу Date)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Перекладач. Користувачу виводять змішані картки з словами на англійській і українській мові. Користувач
+					поступово клікає на картки (виділяємо синьою рамкою). Якщо знайдено правильні пари карток, що відповідають
+					одному слову, то видаляємо ці картки. Інакше - виділяємо червоною рамкою і через секунду забираємо рамку.
+				</div>
+
+				<div class="cards-main-cnt"></div>
+				<script>
+
+					class Translator {
+						constructor(wordsListArray, deleteTime = 1000) {
+							this.wordsList = wordsListArray
+							this.deleteTime = deleteTime
+							this.correctAnswers = 0
+							this.wrongAnswers = 0
+							this.activeCardsObj = {}
+						}
+
+						getRandNum(min, max) {
+							return min + Math.floor(Math.random() * (max - min + 1))
+						}
+
+						createCardsBlocks(lang) {
+
+							const wordsObjectList = [...this.wordsList]
+
+							const cardsCnt = document.createElement('div')
+							while (wordsObjectList.length > 0) {
+								const randIndex = this.getRandNum(0, wordsObjectList.length - 1)
+								const card = document.createElement('div')
+								const currentCard = wordsObjectList[randIndex]
+
+								card.className = "card"
+								card.setAttribute('word-id', currentCard.id)
+								card.innerText = currentCard[lang]
+								cardsCnt.append(card)
+								wordsObjectList.splice(randIndex, 1)
+							}
+							// Зробити тут так, щоб картки генерувались з рандоними словами =)
+
+							cardsCnt.className = "cards-container"
+							cardsCnt.setAttribute('lang', lang)
+
+
+							return cardsCnt
+
+						}
+						checkListItems() {
+
+							if (this.activeCardsObj['en'] && this.activeCardsObj['ua']) {
+								let uaCard = this.activeCardsObj['ua']
+								let enCard = this.activeCardsObj['en']
+
+								if (uaCard.wordId === enCard.wordId) {
+									uaCard.targetItem.remove()
+									enCard.targetItem.remove()
+									this.correctAnswers++
+								}
+								else if (uaCard.wordId !== enCard.wordId) {
+									this.wrongAnswers++
+
+									uaCard.targetItem.classList.toggle('red')
+									enCard.targetItem.classList.toggle('red')
+
+
+									uaCard.targetItem.classList.toggle('active')
+									enCard.targetItem.classList.toggle('active')
+
+									setTimeout(
+										() => {
+											uaCard.targetItem.classList.toggle('red')
+											enCard.targetItem.classList.toggle('red')
+
+										}
+										, 1000)
+								}
+
+								this.activeCardsObj = {}
+
+								if (this.correctAnswers >= this.wordsList.length) {
+									let event = new CustomEvent('test-end', {
+										detail: {
+											wrongAnswers: this.wrongAnswers
+										}
+									})
+									this.container.dispatchEvent(event)
+									this.container.remove()
+								}
+							}
+						}
+
+						checkClickedItem(lang, e) {
+							let targetItem = e.target
+							let wordId = targetItem.getAttribute('word-id')
+							if (wordId) {
+
+								if (this.activeCardsObj[lang]) {
+									this.activeCardsObj[lang].targetItem.classList.toggle('active')
+								}
+								this.activeCardsObj[lang] = {
+									targetItem,
+									wordId
+								}
+								targetItem.classList.toggle('active')
+
+								this.checkListItems()
+							}
+
+
+						}
+						render(containerSelector) {
+
+							this.container = document.querySelector(containerSelector)
+
+							let enWords = this.createCardsBlocks('en')
+							enWords.onclick = (e) => { this.checkClickedItem('en', e) }
+							this.container.append(enWords)
+
+							let uaWords = this.createCardsBlocks('ua')
+							uaWords.onclick = (e) => { this.checkClickedItem('ua', e) }
+							this.container.append(uaWords)
+
+						}
+					}
+
+
+					const words = [
+						{ id: 0, en: 'table', ua: 'стіл' },
+						{ id: 1, en: 'car', ua: 'автомобіль' },
+						{ id: 2, en: 'bus', ua: 'автобус' },
+						{ id: 3, en: 'man', ua: 'людина' },
+						{ id: 4, en: 'boy', ua: 'хлопець' },
+					]
+
+					function endOfTest(e) {
+						alert("Кількість помилок: " + e.detail.wrongAnswers)
+					}
+					let translator = new Translator(words)
+					translator.render('.cards-main-cnt')
+					translator.container.addEventListener('test-end', endOfTest)
+				</script>
+
+
+
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title></title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №22 (Практика. Використання типу Date) </header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Дано дата виробництва йогурта (вводимо рік, місяць, день) та кількість днів придатності. Визначити чи є він
+					придатним на даний момент.
+				</div>
+
+				<label>
+					Введіть дату виробництва йогурта
+					<input id="date" type="date">
+				</label>
+				<button id="btn">Перевірити придатність</button>
+				<script>
+
+					function isExpired(expirationDate) {
+						let currentDate = new Date()
+						if (currentDate > expirationDate) {
+							alert('Термін придатності вичерпано')
+						}
+						else {
+							alert('Йогурт придатний до вживання')
+						}
+					}
+					btn.onclick = () => {
+						isExpired(new Date(date.value))
+					}
+
+				</script>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

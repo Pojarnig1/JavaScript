@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title></title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №22 (Практика. Використання типу Date)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Вивести назву дня
+				</div>
+
+				<div class="date"></div>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+	<script>
+		function displayDay() {
+			let date = new Date()
+			let dayNumber = date.getDay()
+			let dayName
+			switch (dayNumber) {
+
+				case 0:
+					dayName = "Неділя"
+					break;
+				case 1:
+					dayName = "Понеділок"
+					break;
+				case 2:
+					dayName = "Вівторок"
+					break;
+				case 3:
+					dayName = "Середа"
+					break;
+				case 4:
+					dayName = "Четвер"
+					break;
+				case 5:
+					dayName = "П'ятниця"
+					break;
+				case 6:
+					dayName = "Субота"
+					break;
+
+
+				default:
+					dayName = "Введений неправильний номер дня"
+					break;
+			}
+
+			document.querySelector('.date').innerText = "Сьогодні " + dayName
+		}
+		displayDay()
+	</script>
+</body>
+
+</html>

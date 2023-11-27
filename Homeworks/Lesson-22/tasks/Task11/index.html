@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title></title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №22 (Практика. Використання типу Date) </header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Сформувати масив з 1000 елементів від 1 до 800. Порівняти час сортування бульбашкою і вставкою.
+
+				</div>
+
+
+				<div id="bubble-sort"></div>
+				<div id="insertion-sort"></div>
+				<script>
+
+					class CompareSortSpeeds {
+
+						constructor() {
+							this.arr = []
+						}
+						getRandomNumber(min = 1, max = 800) {
+							return min + Math.floor(Math.random() * (max - min + 1))
+						}
+
+						createArray(elementsAmount) {
+							for (let i = 0; i < elementsAmount; i++) {
+								const element = this.getRandomNumber();
+								this.arr.push(element)
+							}
+						}
+
+						bubbleSort() {
+							let sortingArray = [...this.arr]
+							let length = sortingArray.length
+
+							let start = new Date()
+							for (let i = 0; i < length; i++) {
+								for (let j = 0; j < length - 1 - i; j++) {
+									if (sortingArray[j] > sortingArray[j + 1]) {
+										// swap elements
+										[sortingArray[j], sortingArray[j + 1]] = [sortingArray[j + 1], sortingArray[j]];
+									}
+								}
+							}
+							let end = new Date()
+							let sortingTime = end - start
+							return sortingTime
+						}
+
+
+						insertSort() {
+							let SortingArray = [...this.arr]
+							const length = SortingArray.length;
+
+							let start = new Date()
+							for (let i = 1; i < length; i++) {
+								let currentElement = SortingArray[i];
+								let j = i - 1;
+
+								while (j >= 0 && SortingArray[j] > currentElement) {
+									SortingArray[j + 1] = SortingArray[j];
+									j--;
+								}
+
+								SortingArray[j + 1] = currentElement;
+							}
+							let end = new Date()
+							let sortingTime = end - start
+							return sortingTime
+						}
+					}
+
+
+
+					let comparator = new CompareSortSpeeds()
+					comparator.createArray(800)
+
+					document.querySelector('#bubble-sort').innerText = ` Сортування бульбашкою:${comparator.bubbleSort()}`
+					document.querySelector('#insertion-sort').innerText = ` Сортування вставкою:${comparator.insertSort()}`
+				</script>
+
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

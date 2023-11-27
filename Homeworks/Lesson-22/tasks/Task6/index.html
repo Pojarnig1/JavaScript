@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title></title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №22 (Практика. Використання типу Date) </header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Задача 5. Користувач вводить дату народження. Визначити, скільки йому повних років.
+				</div>
+
+				<label>
+					Введіть дату народження
+					<input type="date" id="input" placeholder=" місяць, день, рік">
+				</label>
+				<button type="button" id="btn">Знайти вік</button>
+				<div class="result"></div>
+				<script>
+
+					function findUserAge() {
+						let inputValue = document.querySelector('#input').value
+						let birthDate = new Date(inputValue)
+						const currentDate = new Date()
+
+						let difference = currentDate - birthDate
+						let userAge = Math.floor(difference / (60000 * 60 * 24 * 365.25))
+
+						document.querySelector('.result').innerText = "Вам " + userAge
+					}
+
+					btn.onclick = findUserAge
+				</script>
+
+
+
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

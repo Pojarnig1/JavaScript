@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title></title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №22 (Практика. Використання типу Date)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Задача 3. Визначити поточну пору року
+				</div>
+				<div class="date">
+
+				</div>
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+
+		<script>
+
+			function findSeason(e, date) {
+				date = new Date()
+				let monthNumber = date.getMonth()
+				let currentSeason
+				switch (monthNumber) {
+					case 0:
+					case 1:
+					case 11: currentSeason = "Зима"
+						break;
+
+					case 2:
+					case 3:
+					case 4: currentSeason = "Весна"
+						break;
+
+					case 5:
+					case 6:
+					case 7: currentSeason = "Літо"
+						break;
+
+					case 8:
+					case 9:
+					case 10: currentSeason = "Осінь"
+						break;
+					default:
+						break;
+				}
+
+				document.querySelector('.date').innerText = "Зараз " + currentSeason
+			}
+			findSeason()
+		</script>
+
+
+	</div>
+</body>
+
+</html>

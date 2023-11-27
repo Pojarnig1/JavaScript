@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+	<title>Document</title>
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №22 (Практика. Використання типу Date)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Визначити привітання у залежності від часу доби (Доброго дня, Доброго ранку, Доброго вечора)
+				</div>
+				<div class="page__elements">
+
+				</div>
+			</div>
+
+
+
+			<form action="#" id="formochka">
+				<button id="1" onclick="showWelcomeMessage()">Привітання</button>
+			</form>
+
+
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+
+		<script>
+			function showWelcomeMessage() {
+				let currentHour = new Date().getHours()
+
+				if (currentHour > 5 && 12 > currentHour)
+					alert("Доброго ранку!")
+				else if (currentHour >= 12 && 18 > currentHour)
+					alert("Добрий день!")
+				else if (currentHour >= 18 && 23 > currentHour)
+					alert("Добрий вечір!")
+				else alert("Доброї ночі!")
+			}
+
+
+		</script>
+
+	</div>
+	<script>
+
+	</script>
+
+</body>
+
+</html>

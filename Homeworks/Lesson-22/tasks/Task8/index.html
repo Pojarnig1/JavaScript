@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title></title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №22 (Практика. Використання типу Date) </header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Задаємо користувачу задачу з додавання двох чисел. Визначити скільки секунд було використано для розв’язання
+					задачі.</p>
+				</div>
+
+
+				<script>
+
+					class addChecker {
+						constructor() { }
+
+						getRandomNumber(min = 1, max = 100) {
+							return min + Math.floor(Math.random() * (max - min + 1))
+						}
+
+						createExpression() {
+							const firstNum = this.getRandomNumber()
+							const secondNum = this.getRandomNumber()
+							const result = firstNum + secondNum
+
+							let start = new Date()
+							let userAnswer = parseInt(prompt(`Введіть результат прикладу : ${firstNum} + ${secondNum}`))
+							let end = new Date()
+
+							const timeToThink = new Date(end - start).getSeconds()
+
+							if (userAnswer === result) {
+								alert(`Відповідь правильна! Ви думали : ${timeToThink} с.`)
+							}
+							else (
+								alert(`Відповідь не правильна! Ви думали : ${timeToThink} с.`)
+							)
+						}
+					}
+
+					let checker = new addChecker()
+					checker.createExpression()
+
+				</script>
+
+
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

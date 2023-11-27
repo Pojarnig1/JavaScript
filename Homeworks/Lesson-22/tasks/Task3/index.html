@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title></title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №22 (Практика. Використання типу Date) </header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Задача 2. Вивести дату у форматі
+					“місяць – рік – вихідний/робочий”
+				</div>
+
+				<div class="date">
+
+				</div>
+				<script>
+					let container = document.querySelector('.date')
+					let currentDate = new Date()
+
+					function displayDate(date) {
+						let dayOfWeek = date.getDay()
+						if (dayOfWeek > 0 && dayOfWeek < 6) {
+							dayOfWeek = "Робочий день"
+						}
+						else dayOfWeek = "Вихідний день"
+
+						return `Місяць:${date.getMonth() + 1}, Рік: ${date.getFullYear()} ${dayOfWeek}`
+					}
+					container.innerText = displayDate(currentDate)
+
+				</script>
+
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>
