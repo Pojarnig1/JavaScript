@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №24. (Зберження даних на стороні клієнта. Колекції. Symbol) </header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Дано масив книг (назва, рік видання, автор). Підрахувати кількість книг для кожного автора.
+				</div>
+
+				<div class="testDiv">
+
+				</div>
+
+				<script>
+
+					let booksList = [
+						{
+							title: "Великий Гетсбі",
+							year: 1925,
+							author: "Френсіс Скотт Фіцджеральд"
+						},
+						{
+							title: "Майстер і Маргарита",
+							year: 1967,
+							author: "Михайло Булгаков"
+						},
+						{
+							title: "1984",
+							year: 1949,
+							author: "Михайло Булгаков"
+						},
+						{
+							title: "Таємничий острів",
+							year: 1874,
+							author: "Михайло Булгаков"
+						},
+						{
+							title: "Гаррі Поттер і філософський камінь",
+							year: 1997,
+							author: "Джоан Роулінг"
+						},
+						{
+							title: "Троє в човні, не рахуючи собаки",
+							year: 1889,
+							author: "Джоан Роулінг"
+						},
+						{
+							title: "Веселі пригоди Тома Сойєра",
+							year: 1876,
+							author: "Марк Твен"
+						},
+						{
+							title: "Дон Кіхот",
+							year: 1605,
+							author: "Джоан Роулінг"
+						},
+						{
+							title: "Анна Кареніна",
+							year: 1877,
+							author: "Лев Толстой"
+						},
+						{
+							title: "Маленький принц",
+							year: 1943,
+							author: "Антуан де Сент-Экзюпері"
+						},
+						{
+							title: "Мисливці за скарбами",
+							year: 1883,
+							author: "Антуан де Сент-Экзюпері"
+						},
+
+						{
+							title: "Пригоди Гекльбері Фінна",
+							year: 1884,
+							author: "Марк Твен"
+						}
+					]
+
+					// Створюємо коллекцію Map
+					let map = new Map()
+
+					// Заповнюємо цю коллекцію даними у форматі автор: к-ть книг
+					for (const book of booksList) {
+						let bookCounter = map.get(book.author) ?? 0
+						map.set(book.author, bookCounter + 1)
+					}
+
+					// Виводимо інформацію
+					map.forEach((value, key) => document.write(`${key} : ${value} <br>`))
+
+				</script>
+
+
+
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

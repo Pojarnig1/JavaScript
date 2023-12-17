@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №23 (Опрацювання рядків. Регулярні вирази)
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Дано масив рядків. Вивести ті, у яких є цифри (використати метод test та регулярні вирази).
+				</div>
+
+				<div class="testDiv">
+
+				</div>
+
+				<script>
+
+
+					let testDiv = document.querySelector('.testDiv')
+					const text = '7asdg()!s1!2jas--fgj;1:2::3j:t45,51j,a.sj5faj/123j/9f8)s6a1'
+					let stringsArr = [
+						'asdaf123 asg12344141;',
+						'asdasdwadasd; ',
+						'11123123; ',
+						'asdasfawd; ',
+						'111s',
+						'ssss',
+						'111sd5af123; ',
+						'111sd5asdaf123; ',
+						'sdasdaf; ',
+						'sss',
+						'2444221'
+					]
+
+
+					// Де є цифри
+					// for (const string of stringsArr) {
+					// 	if (/\d+/.test(string)) { testDiv.append(string) }
+					// }
+
+					// Де немає цифр
+					// for (const string of stringsArr) {
+					// 	if (!/\d/.test(string)) {
+					// 		console.log(string);
+					// 	}
+					// }
+
+					// Де є голосні літери
+					// for (const string of stringsArr) {
+					// 	if (/[eyuoa]/.test(string))
+					// 		console.log(string)
+					// }
+
+					// Де є цифра 1 або 3
+					// for (const string of stringsArr) {
+					// 	if (/1|3/.test(string))
+					// 		console.log(string)
+					// }
+
+
+					// testDiv.innerText = text.match(/\p{Punc}/g)
+					// console.log(text.match(/[^\w\s]/g));
+
+					// let myText = 'Привіт! Ти, як вже почув, дуже класний чувак, насамперед, бла бла бла'
+					// console.log(myText.match(/(,+).+(,+)/g));
+
+					// let stringa = '08.12.2004'
+					// let exp = /[0-3iuy2348oyq3yhui[0-12]/g
+					// console.log(stringa.match(exp))
+
+
+				</script>
+
+
+
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

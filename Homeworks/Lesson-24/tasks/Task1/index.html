@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №24. (Зберження даних на стороні клієнта. Колекції. Symbol) </header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Дано список з віком учнів. Підрахувати скільки разів кожне значення зустрічається у списку і максимальне.
+				</div>
+
+				<div class="testDiv">
+
+				</div>
+
+				<script>
+					let agesList = [11, 12, '11', '11', '11', '11', 13, 14, 12, 12, 11, 15, 17, 18, 14, 15, 13, 12, 15, 16, 17]
+
+					let map = new Map()
+
+					for (const age of agesList) {
+						let counterOfCurrentAge = map.get(age) ?? 0
+						map.set(age, counterOfCurrentAge + 1)
+					}
+
+					let entriesArr = []
+					for (const entry of map) {
+						entriesArr.push(entry[0])
+					}
+					console.log('Максимальне значення = ' + Math.max(...entriesArr));
+
+					map.forEach((value, key) => {
+						console.log(key + ':' + value)
+					});
+				</script>
+
+
+
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

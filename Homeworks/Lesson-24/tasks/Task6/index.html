@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №24. (Зберження даних на стороні клієнта. Колекції. Symbol) </header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Користувач може змінювати колір фону, що вибирає користувач з використанням
+					&#60; input type="color"&#62;.
+					Зберігати цей колір і відновлювати при наступному відкритті. Також зберігати і відображати кількість
+					змін протягом одного сеансу.
+				</div>
+
+				<div id="testDiv">
+
+				</div>
+
+				<input id="colorPicker" type="color">
+				<script>
+
+
+					function changePageColor(e) {
+						let inputColor = e.target.value
+
+						localStorage.setItem('color', inputColor)
+						document.body.style.backgroundColor = inputColor
+
+						let colorChangesAmount = sessionStorage.getItem('colorChangesAmount') ?? 0
+
+						sessionStorage.setItem('colorChangesAmount', parseInt(colorChangesAmount) + 1)
+						testDiv.innerText = `К-ть змін кольору за сеанс: ${sessionStorage.getItem('colorChangesAmount')}`
+					}
+
+					function setPageColor() {
+						document.body.style.backgroundColor = localStorage.getItem('color')
+					}
+					colorPicker.onchange = changePageColor
+					setPageColor()
+
+				</script>
+
+
+
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

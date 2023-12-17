@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №24. (Зберження даних на стороні клієнта. Колекції. Symbol) </header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Дано інформацію про відвідувачів деякого сайту (для кожного відвідувача зберігається логін). Підрахувати для
+					кожного клієнта кількість відвідувань.
+
+				</div>
+
+				<div id="testDiv">
+
+				</div>
+
+				<script>
+
+					let usersArray = [
+						{
+							name: 'Andrii',
+							login: 'dron'
+						},
+						{
+							name: 'Vania',
+							login: 'VaNo'
+						},
+						{
+							name: 'Vasilii',
+							login: 'VasKa'
+						},
+						{
+							name: 'Olexandr',
+							login: 'Sanchiz'
+						},
+					]
+
+					// Функція яка створює користувачів за списком
+					function createUsersByArray(usersArray) {
+						for (const user of usersArray) {
+							let userObject = {
+								name: user.name,
+							}
+							localStorage.setItem(user.login.toLowerCase(), JSON.stringify(userObject))
+						}
+					}
+
+
+					window.onload = function () {
+						let userLogin = prompt('Введіть логін').toLowerCase()
+						if (localStorage.getItem(userLogin)) {
+							let userObj = JSON.parse(localStorage.getItem(userLogin))
+
+							// Или же попробовать брать объект с localStorage и потом добавлять новое значение
+
+
+							userObj.visitsAmount = (userObj.hasOwnProperty('visitsAmount') ? userObj.visitsAmount : 0) + 1
+
+							localStorage.setItem(userLogin, JSON.stringify(userObj))
+
+							testDiv.innerText = `Ім'я користувача: ${userObj.name}; Кількість відвідувань: ${userObj.visitsAmount}`
+						}
+						else alert('Невірно введено логін');
+
+
+					}
+				</script>
+
+
+
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>

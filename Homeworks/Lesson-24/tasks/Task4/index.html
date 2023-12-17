@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			Урок №24. (Зберження даних на стороні клієнта. Колекції. Symbol) </header>
+		<main class="page">
+			<div class="page__container">
+				<div class="page__condition">
+					Дано масив студентів (піб, курс, факультет). Підрахувати кількість різних факультетів, та кількість студентів
+					кожного з курсів.
+
+
+				</div>
+
+				<div id="testDiv">
+
+				</div>
+
+				<script>
+					const studentsList = [
+						{ name: "Іванов Іван Іванович", course: 2, faculty: "Інформаційні технології" },
+						{ name: "Петров Петро Петрович", course: 3, faculty: "Медицина" },
+						{ name: "Сидорова Анна Олексіївна", course: 1, faculty: "Медицина" },
+						{ name: "Коваленко Олег Віталійович", course: 4, faculty: "Інженерія" },
+						{ name: "Мельник Марія Василівна", course: 2, faculty: "Філологія" },
+						{ name: "Семенов Сергій Олександрович", course: 3, faculty: "Право" },
+						{ name: "Лисенко Катерина Володимирівна", course: 1, faculty: "Біологія" },
+						{ name: "Григоренко Андрій Васильович", course: 2, faculty: "Географія" },
+						{ name: "Шевченко Людмила Михайлівна", course: 2, faculty: "Хімія" },
+						{ name: "Кузнецов Дмитро Олегович", course: 2, faculty: "Фізика" },
+						{ name: "Тимошенко Ірина Олександрівна", course: 2, faculty: "Математика" },
+						{ name: "Нестеренко Олексій Ігорович", course: 4, faculty: "Екологія" },
+						{ name: "Кравченко Віталій Миколайович", course: 2, faculty: "Соціологія" },
+						{ name: "Гончаренко Євгенія Петрівна", course: 3, faculty: "Психологія" },
+						{ name: "Бондаренко Станіслав Андрійович", course: 1, faculty: "Фінанси" },
+						{ name: "Ковальчук Анастасія Сергіївна", course: 1, faculty: "Музика" },
+						{ name: "Морозов Олександр Олександрович", course: 2, faculty: "Журналістика" },
+						{ name: "Сергієнко Тетяна Юріївна", course: 3, faculty: "Історія" },
+						{ name: "Клименко Артем Олегович", course: 1, faculty: "Маркетинг" },
+						{ name: "Єгорова Юлія Михайлівна", course: 2, faculty: "Література" },
+						{ name: "Денисенко Денис Денисович", course: 3, faculty: "Інформаційні технології" },
+						{ name: "Соколова Анастасія Петрівна", course: 3, faculty: "Медицина" },
+						{ name: "Ковальчук Олександр Ігорович", course: 1, faculty: "Медицина" },
+						{ name: "Гриценко Юлія Володимирівна", course: 4, faculty: "Інженерія" },
+						{ name: "Максимов Максим Максимович", course: 5, faculty: "Філологія" },
+						{ name: "Петренко Павло Олександрович", course: 3, faculty: "Право" },
+						{ name: "Андрієнко Анна Сергіївна", course: 1, faculty: "Біологія" },
+						{ name: "Ткаченко Тарас Олександрович", course: 4, faculty: "Географія" },
+						{ name: "Назаренко Наталія Віталіївна", course: 2, faculty: "Хімія" },
+						{ name: "Лебедєв Леонід Миколайович", course: 3, faculty: "Фізика" },
+						{
+							name: "Марченко Марія Петрівна", course: 1, faculty: "Математика"
+						},
+						{ name: "Євдокимов Євген Віталійович", course: 4, faculty: "Екологія" },
+						{ name: "Попова Поліна Андріївна", course: 2, faculty: "Соціологія" },
+						{ name: "Шевцов Олександр Васильович", course: 3, faculty: "Психологія" },
+						{ name: "Дмитрієва Дарина Володимирівна", course: 1, faculty: "Фінанси" },
+						{ name: "Куліков Костянтин Станіславович", course: 4, faculty: "Музика" },
+						{ name: "Павлова Поліна Олександрівна", course: 2, faculty: "Журналістика" },
+						{ name: "Іванченко Ігор Сергійович", course: 3, faculty: "Історія" },
+						{ name: "Савченко Софія Олександрівна", course: 1, faculty: "Маркетинг" },
+						{ name: "Гавриленко Григорій Васильович", course: 4, faculty: "Література" },
+						{ name: "Литвинова Лілія Анатоліївна", course: 2, faculty: "Інформаційні технології" },
+						{ name: "Мироненко Марина Вікторівна", course: 3, faculty: "Медицина" },
+						{ name: "Білоусов Богдан Олександрович", course: 1, faculty: "Медицина" },
+						{ name: "Дмитрієв Дмитро Ігорович", course: 4, faculty: "Інженерія" },
+						{ name: "Петренко Олена Вікторівна", course: 2, faculty: "Філологія" },
+						{ name: "Сидоренко Сергій Олександрович", course: 3, faculty: "Право" },
+						{ name: "Макарова Маргарита Михайлівна", course: 1, faculty: "Біологія" },
+						{ name: "Головач Андрій Анатолійович", course: 4, faculty: "Географія" },
+						{ name: "Лук'яненко Людмила Олександрівна", course: 2, faculty: "Хімія" },
+						{ name: "Кочетков Кирило Олегович", course: 3, faculty: "Фізика" },
+						{ name: "Єфіменко Єлизавета Ігорівна", course: 1, faculty: "Математика" },
+						{ name: "Захарченко Захар Володимирович", course: 4, faculty: "Екологія" },
+						{ name: "Кравчук Катерина Миколаївна", course: 2, faculty: "Соціологія" },
+						{ name: "Анісімов Андрій Сергійович", course: 3, faculty: "Психологія" },
+						{ name: "Грабовська Ганна Василівна", course: 1, faculty: "Фінанси" },
+						{ name: "Полякова Поліна Артемівна", course: 4, faculty: "Музика" },
+						{ name: "Соколов Олександр Ігорович", course: 2, faculty: "Журналістика" },
+						{ name: "Трофімова Тетяна Олександрівна", course: 3, faculty: "Історія" },
+						{ name: "Хоменко Христина Сергіївна", course: 1, faculty: "Маркетинг" },
+						{ name: "Коваленко Кирило Олександрович", course: 4, faculty: "Література" }
+					];
+
+
+					function findFacultiesAmount(studentsList) {
+						let facultiesList = new Set()
+						for (const student of studentsList) {
+							facultiesList.add(student.faculty)
+						}
+						return facultiesList
+
+					}
+
+					function countStudentsInCourse(studentsList) {
+						let map = new Map()
+
+						for (const student of studentsList) {
+							let studentsCount = map.get(student.course) ?? 0
+							map.set(student.course, studentsCount + 1)
+						}
+
+						let div = document.createElement('div')
+						map.forEach((value, key) => {
+							testDiv.append(`${key}курс: ${value}уч. `)
+						});
+						return map
+					}
+
+
+
+					countStudentsInCourse(studentsList)
+
+					document.write("Всього факультетів:" + findFacultiesAmount(studentsList).size)
+
+
+				</script>
+
+
+
+			</div>
+		</main>
+		<footer class="footer">
+			Роботи виконує Андрієць Андрій (Pojarnig1)
+		</footer>
+	</div>
+</body>
+
+</html>
